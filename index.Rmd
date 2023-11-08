@@ -1,12 +1,11 @@
 ---
 title: "Your Project Title Here"
-author: "Your team member names here"
-date: "Add a date"
+author: "Clara Hoey, Daizy Buluma, Christian Manzi"
+date: "8 Nov. 2023"
 output:
   rmdformats::readthedown:
     highlight: "kate"
 ---
-
 ```{r setup, include = FALSE}
 # Set code chunk defaults 
 # Consider adding `message = FALSE` option
