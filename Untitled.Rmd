@@ -1,11 +1,15 @@
 ---
-title: "BlogWrangling"
+title: "Data wrangling"
 output: html_document
 date: "2023-11-14"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(readr)
+
 ```
 
 ## R Markdown
@@ -15,7 +19,17 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r cars}
-summary(cars)
+data <- read_csv("data/survey_results_public.csv")
+
+data <- data %>% filter(
+  Country == "United States of America",
+  SOVisitFreq == "Daily or almost daily"
+)
+
+glimpse(data)
+
+saveRDS(data, "survey_results.rds")
+
 ```
 
 ## Including Plots
