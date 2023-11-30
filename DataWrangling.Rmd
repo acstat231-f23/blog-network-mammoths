@@ -32,6 +32,14 @@ saveRDS(data, "survey_results.rds")
 
 head(data$SOAI)
 
+df <- select(data,
+  ResponseId,
+  SOAI)
+
+glimpse(df)
+
+saveRDS(data, "SOAI_responses.rds")
+
 ```
 
 ## Including Plots
