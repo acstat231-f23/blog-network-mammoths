@@ -1,0 +1,147 @@
+---
+title: "Data wrangling"
+output: html_document
+date: "2023-11-14"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(readr)
+library(tidytext)
+library(textdata)
+library(wordcloud)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+data <- read_csv("data/survey_results_public.csv")
+
+fdata <- data %>% filter(
+  Country == "United States of America",
+  SOVisitFreq == "Daily or almost daily"
+)
+
+glimpse(data)
+
+saveRDS(data, "survey_results.rds")
+
+head(data$SOAI)
+
+df <- data |>
+  select(ResponseId, SOAI)
+
+glimpse(df)
+
+saveRDS(df, "data/ID_SOAI_responses.rds")
+
+
+#################
+# TEXT ANALYSIS #
+#################
+
+soai_res <- read_rds("data/ID_SOAI_responses.rds")
+
+glimpse(soai_res)
+
+soai_data <- soai_res |>
+  unnest_tokens(output = word, input = SOAI) |>
+  # unnest_tokes(input = SOAI, output = bigram, token = "ngrams", n = 3)
+  filter(!is.na(word))
+
+head(soai_data)
+
+head(stop_words) 
+
+non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
+
+more_stop_words <- c("stack", "overflow", "ai", "stackoverflow")
+
+# filter stop_words to keep some words
+
+filtered_stop_words <- stop_words |>
+  filter(!word %in% non_stop_words)
+
+# words in soai_data before filtering for stop_words
+count(soai_data) # 849,989
+
+soai_no_stopwords <- soai_data |>
+  anti_join(filtered_stop_words, by = "word") |>
+  filter(! word %in% more_stop_words)
+
+count(soai_no_stopwords) # 345,877
+
+removed_words <- soai_data |>
+  anti_join(soai_no_stopwords, by = "word") |>
+  count(word) |>
+  arrange(word)
+
+removed_words # 659 words
+
+# PLOT FREQUENT WORDS
+
+soai_no_stopwords |>
+    count(word, sort = TRUE) |>
+    slice(1:10) |>
+    # fct_reorder is used to re-order the axis (displaying the word)
+    # by values of n (the number of times that word was used)
+    ggplot(aes(x = fct_reorder(word, n), y = n, color = word, fill = word)) +
+    geom_col() +
+    # Rotate graph
+    coord_flip() +
+    guides(color = "none",
+           fill = "none") +
+    labs(
+      # Remove x variable label; notice that although coordinates are flipped,
+      # the labels correspond to which variables were specified
+      # as `x` and `y` in `aes()`
+      x = NULL,
+      y = "Number of instances",
+      title = "The most common words in developers responses on AI")
+
+soai_word_freqs <- soai_no_stopwords |>
+  select(word) |>
+  count(word)
+
+# WORDCLOUD WITH FREQUENT WORDS
+
+# Word cloud 
+  set.seed(1)
+  # Create word cloud using tidyverse
+  soai_word_freqs |>
+    with(wordcloud(words = word,
+                   freq = n,
+                   min.freq = 1000,
+                   max.words = 50))
+  
+# PLOT OVERALL RESPONSES SENTIMENT SCORE  
+
+afinn_lexicon <- get_sentiments("afinn")
+
+# using afinn lexicon
+soai_afinn <- soai_no_stopwords |>
+  inner_join(afinn_lexicon, by = "word") |>
+  group_by(ResponseId) |>
+  summarize(total_score_per_response = sum(value))
+
+ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
+  geom_density(color="#AF7AC5", fill="#AF7AC5", alpha = 0.5) +
+  theme_classic() +
+  labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
