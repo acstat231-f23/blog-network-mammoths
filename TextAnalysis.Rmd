@@ -12,6 +12,10 @@ library(readr)
 library(tidytext)
 library(textdata)
 library(wordcloud)
+
+library(ggrepel)
+library(broom)
+library(GGally)
 ```
 
 ## R Markdown
@@ -35,7 +39,7 @@ saveRDS(data, "survey_results.rds")
 head(data$SOAI)
 
 df <- data |>
-  select(ResponseId, SOAI)
+  select(ResponseId, SOAI, YearsCode, Age)
 
 glimpse(df)
 
@@ -134,6 +138,46 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
   geom_density(color="#AF7AC5", fill="#AF7AC5", alpha = 0.5) +
   theme_classic() +
   labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
+
+
+#######################
+# CLUSTERING ANALYSIS #
+#######################
+
+# Join soai_affin with df to get total_score_per_response and other numeric variable
+text_df <- merge(x=df,y=soai_afinn, 
+             by="ResponseId")
+
+# CLUSTER 
+
+ma_kmeans2 <- ma_colleges_sat25 |>
+  kmeans(centers = 5, nstart = 20)
+
+ma_colleges_c2 <- augment(ma_kmeans2, ma_colleges)
+
+# Visualize the cluster assignments and centroids
+ggplot(ma_colleges_c2, aes(x = sat_math25, y = sat_readwrite25)) + 
+  geom_point(aes(color = .cluster, shape = .cluster)) +
+  geom_text_repel(aes(label = institution, color = .cluster), 
+                  size = 3, max.overlaps = 15, show.legend = FALSE) +
+  scale_x_continuous(breaks = scales::breaks_width(25)) +
+  scale_y_continuous(breaks = scales::breaks_width(25)) +
+  # Add centroid labels to plot
+  geom_label(data = ma_kmeans2_summaries, aes(label = cluster, color = cluster),
+             size = 3,
+             label.r = unit(0.5, "lines"),
+             label.size = 1.5,
+             label.padding = unit(0.5, "lines"),
+             show.legend = FALSE) +
+  labs(x = "SAT Math\n(25th percentile)",
+       y = "SAT Reading & Writing\n(25th percentile)",
+       color = "Cluster",
+       shape = "Cluster") +
+  theme_classic()
+
+
+
+
 ```
 
 ## Including Plots
