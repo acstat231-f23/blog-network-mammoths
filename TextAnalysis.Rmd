@@ -61,7 +61,7 @@ head(stop_words)
 
 non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
 
-more_stop_words <- c("stack", "overflow", "ai", "stackoverflow")
+more_stop_words <- c("stack", "overflow", "ai", "stackoverflow", "questions", "answers", "users")
 
 # filter stop_words to keep some words
 
@@ -88,7 +88,7 @@ removed_words # 659 words
 
 soai_no_stopwords |>
     count(word, sort = TRUE) |>
-    slice(1:10) |>
+    slice(1:20) |>
     # fct_reorder is used to re-order the axis (displaying the word)
     # by values of n (the number of times that word was used)
     ggplot(aes(x = fct_reorder(word, n), y = n, color = word, fill = word)) +
