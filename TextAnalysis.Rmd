@@ -150,10 +150,10 @@ text_df <- merge(x=df,y=soai_afinn,
 
 # CLUSTER 
 
-ma_kmeans2 <- ma_colleges_sat25 |>
+text_c1 <- text_df |>
   kmeans(centers = 5, nstart = 20)
 
-ma_colleges_c2 <- augment(ma_kmeans2, ma_colleges)
+text_c1 <- augment(text_c1, text_df)
 
 # Visualize the cluster assignments and centroids
 ggplot(ma_colleges_c2, aes(x = sat_math25, y = sat_readwrite25)) + 
