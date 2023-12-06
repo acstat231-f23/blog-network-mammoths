@@ -2,6 +2,7 @@
 title: "Your Project Title Here"
 author: "Clara Hoey, Daizy Buluma, Christian Manzi"
 date: "8 Nov. 2023"
+ouptut: html
 format:
   html:
     theme: minty
