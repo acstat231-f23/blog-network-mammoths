@@ -199,7 +199,7 @@ Any Shiny apps embedded in your blog should be accompanied by the link to the pu
 #| label: ds-salaries-app
 #| out.width: "100%"
 
-knitr::include_app("https://bebailey.shinyapps.io/data-science-salaries",
+knitr::include_app("https://manzic.shinyapps.io/network_mammoths_shiny",
                    height = "500px")
 ```
 
