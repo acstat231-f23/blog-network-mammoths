@@ -45,7 +45,7 @@ In the world of coding, things are shaking up with the rise of artificial intell
 
 You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/).
 
-```{r}
+```{r,show_col_types = FALSE}
 #| label: ggplot-example
 #| fig.align: left
 #| out.width: 100%
@@ -57,11 +57,11 @@ fdata <- data %>% filter(
   SOVisitFreq == "Daily or almost daily"
 )
 
-glimpse(data)
+#glimpse(data)
 
 saveRDS(data, "survey_results.rds")
 
-head(data$SOAI)
+#head(data$SOAI)
 
 df <- data |>
   select(ResponseId, SOAI, YearsCode, Age)
@@ -83,9 +83,9 @@ soai_data <- soai_res |>
   # unnest_tokes(input = SOAI, output = bigram, token = "ngrams", n = 3)
   filter(!is.na(word))
 
-head(soai_data)
+#head(soai_data)
 
-head(stop_words) 
+#head(stop_words) 
 
 non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
 
@@ -97,20 +97,20 @@ filtered_stop_words <- stop_words |>
   filter(!word %in% non_stop_words)
 
 # words in soai_data before filtering for stop_words
-count(soai_data) # 849,989
+#count(soai_data) # 849,989
 
 soai_no_stopwords <- soai_data |>
   anti_join(filtered_stop_words, by = "word") |>
   filter(! word %in% more_stop_words)
 
-count(soai_no_stopwords) # 345,877
+#count(soai_no_stopwords) # 345,877
 
 removed_words <- soai_data |>
   anti_join(soai_no_stopwords, by = "word") |>
   count(word) |>
   arrange(word)
 
-removed_words # 659 words
+#removed_words # 659 words
 
 # PLOT FREQUENT WORDS
 
