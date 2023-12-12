@@ -42,3 +42,7 @@ vignettes/*.pdf
 .DS_Store
 data/survey_results_public.csv
 CopyOfTextAnalysis.Rmd
+index_files/figure-html/ggplot-1-1.png
+index_files/figure-html/ggplot-2-1.png
+index_files/libs/datatables-binding-0.30/datatables.js
+index_files/figure-html/ggplot-3-1.png
