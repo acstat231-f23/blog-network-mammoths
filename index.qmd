@@ -29,7 +29,7 @@ library(wordcloud)
 
 # Introduction
 
-In the world of coding, things are shaking up with the rise of artificial intelligence (AI) tools. From those just getting the hang of coding to the pros handling big projects, everyone's got a different take on AI. In this blog project, we're digging into the real thoughts of programmers at different career stages. We look into their honest insights about how AI tools are fitting into their coding lives. 
+In the world of coding, things are shaking up with the rise of artificial intelligence (AI) tools. From people just getting the hang of coding to the pros handling big projects, everyone has a different perspective on AI. In this blog project, we’re digging into the real thoughts of thousands of programmers across the United States at different career stages. Our goal is to use sentiment analysis to better understand the attitudes of programmers towards the use of AI tools in Stack Overflow. With the continuing rise of AI usage in the programming industry, it is important to understand how professional programmers feel about the impact of AI on their work.
 
 ```{r}
 #| fig.cap: 'Man vs AI'
@@ -39,7 +39,10 @@ In the world of coding, things are shaking up with the rise of artificial intell
 knitr::include_graphics("img/AI.png")
 ```
 
-As we delve deeper into the dynamic intersection of artificial intelligence and programming, it becomes evident that developers across various career stages are navigating a landscape that continually evolves. From the novice coders navigating their initial lines of code to seasoned professionals orchestrating complex projects, the integration of AI tools is reshaping the very essence of their work. This blog project aims to capture the nuanced perspectives of these developers, shedding light on the multifaceted ways in which AI is influencing their coding practices. Whether it's streamlining repetitive tasks, unlocking new possibilities, or presenting unforeseen challenges, each coder brings a unique story to the table, contributing to the broader narrative of AI's impact on the programming realm.
+All of the programmers in our study are software developers who use Stack Overflow (an online platform for sharing knowledge about computer programming) for their work at least once a week. The data is in the form of survey responses. The survey includes a mix of multiple choice and open response questions in 7 categories: (1) Basic Information; (2) Education, Work, and Career; (3) Technology and Tech Culture; (4) Stack Overflow Usage + Community; (5) Artificial Intelligence; (6) Professional Developer Series (Optional); and (7) Final Questions. In this blog, we have included data from some demographic multiple choice questions (e.g. age, years of coding experience) and have also done text analysis on the open response question “What is your opinion on Stack Overflow using AI tools to improve the current experience? What could AI help with most to improve Stack Overflow?”. 
+
+This data is from the American Statistical Association’s Fall 2023 Data Challenge. The description of the dataset and downloadable zip file containing all of the data used in this project can be found at this link: https://community.amstat.org/asafalldatachallenge/home. 
+					
 
 
 <!-- ## Website publication work flow -->
