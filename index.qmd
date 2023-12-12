@@ -230,8 +230,9 @@ Any Shiny apps embedded in your blog should be accompanied by the link to the pu
 
 knitr::include_app("https://bebailey.shinyapps.io/data-science-salaries",
                    height = "500px")
-```
 
+
+```
 <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px />
 
 ## Tables
