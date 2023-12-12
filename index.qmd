@@ -166,6 +166,10 @@ soai_word_freqs <- soai_no_stopwords |>
 #| fig.align: left
 #| out.width: 100%
 
+soai_data_gram <- soai_res |>
+ unnest_tokens(output = word, input= SOAI, token="words") %>%
+  filter(!is.na(word))
+
 soai_data <- soai_res |>
  unnest_tokens(output = word, input= SOAI, token="ngrams", n=3) %>%
   filter(!is.na(word))
@@ -179,15 +183,9 @@ more_stop_words <- c("stack", "overflow", "ai", "stackoverflow", "questions", "a
 filtered_stop_words <- stop_words |>
   filter(!word %in% non_stop_words)
 
-
 soai_no_stopwords <- soai_data |>
   anti_join(filtered_stop_words, by = "word") |>
   filter(! word %in% more_stop_words)
-
-removed_words <- soai_data |>
-  anti_join(soai_no_stopwords, by = "word") |>
-  count(word) |>
-  arrange(word)
 
 
 soai_no_stopwords |>
@@ -222,8 +220,17 @@ soai_no_stopwords |>
 
 afinn_lexicon <- get_sentiments("afinn")
 
+soai_no_stopwords_gram <- soai_data_gram |>
+  anti_join(filtered_stop_words, by = "word") |>
+  filter(! word %in% more_stop_words)
+
+removed_words <- soai_data_gram |>
+  anti_join(soai_no_stopwords_gram, by = "word") |>
+  count(word) |>
+  arrange(word)
+
 # using afinn lexicon
-soai_afinn <- soai_no_stopwords |>
+soai_afinn <- soai_no_stopwords_gram |>
   inner_join(afinn_lexicon, by = "word") |>
   group_by(ResponseId) |>
   summarize(total_score_per_response = sum(value))
@@ -261,6 +268,20 @@ soai_nrc_ds <- soai_nrc |>
 ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
   geom_col(aes(fill = sentiment))
 
+# PLOT OVERALL RESPONSES SENTIMENT SCORE  
+
+#bing_lexicon <- get_sentiments("bing") 
+nrc_lexicon <- get_sentiments("nrc")
+
+# using nrc lexicon
+soai_nrc <- soai_no_stopwords_gram |>
+  inner_join(nrc_lexicon, by = "word") |>
+  group_by(sentiment) 
+
+ggplot(data = soai_nrc, aes(x = sentiment)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 45)) +
+  labs(title = "Visualizing Overall Sentiment based on NRC Lexicon", x = "Sentiments", y = "Word Count") 
 
 ```
 
