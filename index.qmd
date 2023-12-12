@@ -158,6 +158,9 @@ soai_word_freqs <- soai_no_stopwords |>
   select(word) |>
   count(word)
 ```
+
+
+
 ```{r}
 #| label: ggplot-2
 #| fig.align: left
@@ -231,6 +234,9 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
   labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
 
 ```
+
+
+
 
 ```{r}
 #| label: ggplot-4
