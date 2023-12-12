@@ -100,7 +100,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
-  <li><a href="#content" id="toc-content" class="nav-link" data-scroll-target="#content">Content</a>
+  <li><a href="#how-developers-describe-ai-tools" id="toc-how-developers-describe-ai-tools" class="nav-link" data-scroll-target="#how-developers-describe-ai-tools">How Developers Describe AI Tools</a></li>
+  <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a>
   <ul class="collapse">
   <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
   <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
@@ -181,21 +182,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- 2. Knit to HTML to view progress. You may need to click "Open in Browser" for some content to show (sometimes content won't show until you actually push your changes to GitHub and view the published website). -->
 <!-- 3. Commit and push changes when you are ready. The website may take a couple minutes to update automatically after the push, but you may need to clear your browser's cache or view the page in a private/incognito window to see the changes more quickly.  -->
 </section>
-<section id="content" class="level1">
-<h1>Content</h1>
+<section id="how-developers-describe-ai-tools" class="level1">
+<h1>How Developers Describe AI Tools</h1>
 <p>You can include text, <code>code</code>, and output as usual. Remember to take full advantage of Markdown and its <a href="https://www.markdownguide.org/basic-syntax/">syntax shortcuts</a>.</p>
-<div class="cell" data-layout-align="left">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 89184 Columns: 84
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (80): Q120, MainBranch, Age, Employment, RemoteWork, CodingActivities, E...
-dbl  (4): ResponseId, CompTotal, WorkExp, ConvertedCompYearly
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
@@ -214,6 +203,9 @@ dbl  (4): ResponseId, CompTotal, WorkExp, ConvertedCompYearly
 </div>
 </div>
 </div>
+</section>
+<section id="overall-developer-sentiments" class="level1">
+<h1>Overall Developer Sentiments</h1>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
@@ -257,12 +249,12 @@ dbl  (4): ResponseId, CompTotal, WorkExp, ConvertedCompYearly
 <p>The <a href="https://rstudio.github.io/DT/"><strong>DT</strong> package</a> is great for making dynamic tables that can be displayed, searched, and filtered by the user without needing an R server or Shiny app!</p>
 <p>Note: you should load any packages you use in the <code>setup</code> code chunk as usual. The <code>library()</code> functions are shown below just for demonstration.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, hp) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">&quot;MPG&quot;</span>, <span class="st">&quot;Number of cylinders&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">&#39;top&#39;</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">autoWidth =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, hp) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">&quot;MPG&quot;</span>, <span class="st">&quot;Number of cylinders&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">autoWidth =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <div class="cell-output-display">
 
 <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b3789479ff0c478eeef9" style="width:100%;height:auto;"></div>
@@ -274,12 +266,12 @@ dbl  (4): ResponseId, CompTotal, WorkExp, ConvertedCompYearly
 <h3><strong>kableExtra</strong> package</h3>
 <p>You can also use <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><strong>kableExtra</strong></a> for customizing HTML tables.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Speed&quot;</span>, <span class="st">&quot;Distance&quot;</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">width =</span> <span class="st">&quot;1.5in&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Speed&quot;</span>, <span class="st">&quot;Distance&quot;</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">width =</span> <span class="st">&quot;1.5in&quot;</span>) </span></code></pre></div>
 <div class="cell-output-display">
 <table class="table table-striped" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
