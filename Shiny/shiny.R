@@ -38,6 +38,7 @@ server <- function(input,output){
     ggplot(data, aes_string(y = "total_score", x = input$y_val)) +
       geom_boxplot() +
       labs(y = "Response Score", x = input$y_val)
+      
   })
   }
 ####################
