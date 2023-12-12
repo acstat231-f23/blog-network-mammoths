@@ -55,7 +55,7 @@ As we delve deeper into the dynamic intersection of artificial intelligence and 
 
 You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/).
 
-```{r}
+```{r,message=FALSE}
 #| label: data-wrangling
 #| fig.align: left
 #| out.width: 100%
