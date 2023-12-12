@@ -238,7 +238,7 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
 
 
 
-```{r}
+```{r,message=FALSE}
 #| label: ggplot-4
 #| fig.align: left
 #| out.width: 100%
