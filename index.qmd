@@ -127,6 +127,8 @@ removed_words <- soai_data |>
 
 
 ```
+
+
 ```{r}
 #| label: ggplot-1
 #| fig.align: left
@@ -160,17 +162,50 @@ soai_word_freqs <- soai_no_stopwords |>
 #| label: ggplot-2
 #| fig.align: left
 #| out.width: 100%
-#| #| fig.cap: 'Wordcloud'
-# WORDCLOUD WITH FREQUENT WORDS
 
-# Word cloud 
-  set.seed(1)
-  # Create word cloud using tidyverse
-  soai_word_freqs |>
-    with(wordcloud(words = word,
-                   freq = n,
-                   min.freq = 1000,
-                   max.words = 50))
+soai_data <- soai_res |>
+ unnest_tokens(output = word, input= SOAI, token="ngrams", n=3) %>%
+  filter(!is.na(word))
+
+non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
+
+more_stop_words <- c("stack", "overflow", "ai", "stackoverflow", "questions", "answers", "users","it could","would","would be")
+
+# filter stop_words to keep some words
+
+filtered_stop_words <- stop_words |>
+  filter(!word %in% non_stop_words)
+
+
+soai_no_stopwords <- soai_data |>
+  anti_join(filtered_stop_words, by = "word") |>
+  filter(! word %in% more_stop_words)
+
+removed_words <- soai_data |>
+  anti_join(soai_no_stopwords, by = "word") |>
+  count(word) |>
+  arrange(word)
+
+
+soai_no_stopwords |>
+    count(word, sort = TRUE) |>
+    slice(1:25) |>
+    # fct_reorder is used to re-order the axis (displaying the word)
+    # by values of n (the number of times that word was used)
+    ggplot(aes(x = fct_reorder(word, n), y = n, color = word, fill = word)) +
+    geom_col() +
+    # Rotate graph
+    coord_flip() +
+    guides(color = "none",
+           fill = "none") +
+    labs(
+      # Remove x variable label; notice that although coordinates are flipped,
+      # the labels correspond to which variables were specified
+      # as `x` and `y` in `aes()`
+      x = NULL,
+      y = "Number of instances",
+      title = "The most common words in developers responses on AI")
+
 ```
 
 ## Overall Developer Sentiments
@@ -242,9 +277,13 @@ You should include links to relevant sites as you write. You should additionally
 #| out.width: "100%"
 
 
+
+  knitr::include_app("https://manzic.shinyapps.io/NMSHINY/",
+                    height = "500px")
+
 ```
 
-<iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px />
+<!-- #<iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px /> -->
 
 
 
