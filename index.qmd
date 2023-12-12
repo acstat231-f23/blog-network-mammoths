@@ -27,7 +27,7 @@ library(textdata)
 library(wordcloud)
 ```
 
-# Intro
+# Introduction
 
 In the world of coding, things are shaking up with the rise of artificial intelligence (AI) tools. From those just getting the hang of coding to the pros handling big projects, everyone's got a different take on AI. In this blog project, we're digging into the real thoughts of programmers at different career stages. We look into their honest insights about how AI tools are fitting into their coding lives. 
 
@@ -51,11 +51,11 @@ As we delve deeper into the dynamic intersection of artificial intelligence and 
 <!-- 3. Commit and push changes when you are ready. The website may take a couple minutes to update automatically after the push, but you may need to clear your browser's cache or view the page in a private/incognito window to see the changes more quickly.  -->
 
 
-# Content
+# How Developers Describe AI Tools
 
-You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/).
+<!-- You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/). -->
 
-```{r}
+```{r,message=FALSE}
 #| label: data-wrangling
 #| fig.align: left
 #| out.width: 100%
@@ -168,6 +168,9 @@ soai_word_freqs <- soai_no_stopwords |>
                    min.freq = 1000,
                    max.words = 50))
 ```
+
+# Overall Developer Sentiments
+
 ```{r}
 #| label: ggplot-3
 #| fig.align: left
@@ -189,6 +192,8 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
   labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
 
 ```
+
+
 
 Examples and additional guidance are provided below. 
 
