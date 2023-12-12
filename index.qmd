@@ -4,7 +4,7 @@ author: "Clara Hoey, Daizy Buluma, Christian Manzi"
 date: "12 Dec. 2023"
 format:
   html:
-    theme: default
+    theme: cosmo
     toc: true
 ---
 
@@ -207,206 +207,23 @@ You can include [links](https://www.datadreaming.org/post/r-markdown-theme-galle
 You should include links to relevant sites as you write. You should additionally include a list of references as the end of your blog with full citations (and relevant links).
 
 
-## Visualizations 
-
-
 ## Sentiments based on various categories
 ```{r}
 #| label: ds-salaries-app
 #| out.width: "100%"
-
-knitr::include_app("https://bebailey.shinyapps.io/data-science-salaries",
-                   height = "500px")
 
 
 ```
 
 <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px />
 
-## Tables
 
-### **DT** package
-
-The [**DT** package](https://rstudio.github.io/DT/) is great for making dynamic tables that can be displayed, searched, and filtered by the user without needing an R server or Shiny app!
-
-Note: you should load any packages you use in the `setup` code chunk as usual. The `library()` functions are shown below just for demonstration.
-
-```{r}
-#| label: dt-example
-#| message: false
-#| echo: true
-
-library(DT)
-mtcars |>
-  select(mpg, cyl, hp) |>
-  datatable(colnames = c("MPG", "Number of cylinders", "Horsepower"),
-            filter = 'top',
-            options = list(pageLength = 10, autoWidth = TRUE))
-```
-
-### **kableExtra** package
-
-You can also use [**kableExtra**](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) for customizing HTML tables.
-
-```{r}
-#| label: kable-example
-#| echo: true
-#| message: false
-
-library(kableExtra)
-summary(cars) |>
-  kbl(col.names = c("Speed", "Distance"), row.names = FALSE) |>
-  kable_styling(bootstrap_options = "striped", full_width = FALSE) |>
-  row_spec(0, bold = TRUE) |>
-  column_spec(1:2, width = "1.5in") 
-```
-
-
-
-
-```{r}
-#| fig.cap: "This is a figure caption"
-#| out.width: 50%
-#| fig.align: center
-knitr::include_graphics("https://media.giphy.com/media/H7ZrrA9V2pd3Tehdds/giphy.gif")
-```
-
-You may also use Markdown syntax for displaying images as shown below, but code chunks offer easier customization of the image size and alignment.
 
 ![This is another figure caption](https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif)
 
-Either way, the file path can be a local path within your project directory or a URL for an image hosted online. This syntax works for PNG, PDF, JPG, and even GIF formats.
+# Conclusion
 
-
-
-
-
-# Formatting
-
-## Tabbed subsections {.tabset}
-
-Each subsection below the "Tabbed subsections" section heading will appear in a tab. See R Markdown Cookbook [Section 7.6: Put content in tabs](https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html) for additional customization options. 
-
-### Bulleted list
-
-You can make a bulleted list like this:
-
-* item 1
-* item 2
-* item 3
-
-
-### Numbered list
-
-
-You can make a numbered list like this
-
-1. First thing I want to say
-2. Second thing I want to say
-3. Third thing I want to say
-
-
-
-## Column formatting
-
-<!-- Begin columns environment -->
-:::::: {style="display: flex; font-size: large;"}
-
-<!-- Create a column -->
-::: {}
-### Content Column 1
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel ipsum eu sem facilisis porttitor. Integer eu tristique lectus. Vestibulum nisi risus, porta sit amet cursus nec, auctor ac tellus. Integer egestas viverra rhoncus. Fusce id sem non ante vestibulum posuere ac sed lorem. Proin id felis a mi pellentesque viverra in at nulla. Duis augue nulla, aliquet ac ligula a, sagittis varius lorem.
-
-
-
-:::
-
-<!-- Create another column (this one is just adding horizontal space to separate content) -->
-::: {}
-<div class="horizontalgap" style="width:60px"></div>
-:::
-
-<!-- Create another column -->
-::: {}
-
-### Content Column 2
-
-Aliquam non ante et erat luctus hendrerit eu ac justo. Fusce lacinia pulvinar neque non laoreet. Fusce vitae mauris pharetra, scelerisque purus eget, pharetra nisl. Aenean volutpat elementum tortor vitae rhoncus. Phasellus nec tellus euismod neque congue imperdiet tincidunt in mauris. Morbi eu lorem molestie, hendrerit lorem nec, semper massa. Sed vulputate hendrerit ex, eget cursus purus. Pellentesque consequat erat leo, eleifend porttitor lacus porta at. Vivamus faucibus quam ipsum, id condimentum ligula malesuada ultrices. Nullam luctus leo elit, vitae rutrum nibh venenatis eget. Nam at sodales purus. Proin nulla tellus, lacinia eget pretium sed, vehicula aliquet neque. Morbi vel eros elementum, suscipit elit eu, consequat libero. Nulla nec aliquet neque. Nunc bibendum sapien lectus, sed elementum nisi rutrum non. Ut vulputate at lacus eget maximus.
-
-```{r}
-#| out.width: 80%
-#| fig.align: right
-mtcars |>
-  ggplot(aes(x = wt, y = mpg)) +
-  geom_point()
-```
-
-:::
-::::::
-<!-- End columns environment with matching length indicator-->
-
-
-
-
-# Customizing your blog design
-
-
-As a *final* detail **only** if you have time, you can explore options for customizing the style of your blog. By default, we are using the `cosmo` theme from Bootswatch themes (see Line 7 of this file if you want to switch out themes). 
-
-
-## Theme
-
-There are 25 Bootswatch themes included with Quarto. You can change the theme easily by specifying one of these themes on Line 7: 
-
-- default  
-- cerulean  
-- cosmo  
-- cyborg  
-- darkly  
-- flatly  
-- journal  
-- litera  
-- lumen  
-- lux  
-- materia  
-- minty  
-- morph  
-- pulse  
-- quartz  
-- sandstone  
-- simplex  
-- sketchy  
-- slate  
-- solar  
-- spacelab  
-- superhero  
-- united  
-- vapor  
-- yeti  
-- zephyr
-
-There are, I'm sure, many more similar packages with built in themes, or you can look into how to include a CSS code chunk to customize aspects of a theme.  
-
-## Synax highlighting
-
-You can also change the code chunk syntax highlighting option (Line 7, `highlight`): 
-
-* `"default"`
-* `"tango"`
-* `"pygments"`
-* `"kate"`
-* `"monochrome"`
-* `"espresso"`
-* `"zenburn"`
-* `"haddock"`
-* `"textmate"` 
-* `NULL` for no syntax highlighting (not recommended)
-
-## Font size, type, and other customization
-
-Further customization requires adding a CSS style file or code chunk or incorporating other development options. Further customization should be your lowest and final priority for the project. Ensure your content is fully prepared first.
-
+Our conclusion and recommendations maybe?
 
 # References
 

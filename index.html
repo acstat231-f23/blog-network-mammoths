@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -70,24 +36,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-<script src="index_files/libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<link href="index_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="index_files/libs/datatables-binding-0.29/datatables.js"></script>
-<script src="index_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="index_files/libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="index_files/libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="index_files/libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script>
-<link href="index_files/libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
-<script src="index_files/libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
-<link href="index_files/libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
-<script src="index_files/libs/selectize-0.12.0/selectize.min.js"></script>
-<link href="index_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="index_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<script src="index_files/libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="index_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -104,31 +52,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a></li>
   <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
-  <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
   <li><a href="#sentiments-based-on-various-categories" id="toc-sentiments-based-on-various-categories" class="nav-link" data-scroll-target="#sentiments-based-on-various-categories">Sentiments based on various categories</a></li>
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a>
-  <ul class="collapse">
-  <li><a href="#dt-package" id="toc-dt-package" class="nav-link" data-scroll-target="#dt-package"><strong>DT</strong> package</a></li>
-  <li><a href="#kableextra-package" id="toc-kableextra-package" class="nav-link" data-scroll-target="#kableextra-package"><strong>kableExtra</strong> package</a></li>
   </ul></li>
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
-  <li><a href="#equations" id="toc-equations" class="nav-link" data-scroll-target="#equations">Equations</a></li>
-  </ul></li>
-  <li><a href="#formatting" id="toc-formatting" class="nav-link" data-scroll-target="#formatting">Formatting</a>
-  <ul class="collapse">
-  <li><a href="#tabbed-subsections" id="toc-tabbed-subsections" class="nav-link" data-scroll-target="#tabbed-subsections">Tabbed subsections</a>
-  <ul class="collapse">
-  <li><a href="#bulleted-list" id="toc-bulleted-list" class="nav-link" data-scroll-target="#bulleted-list">Bulleted list</a></li>
-  <li><a href="#numbered-list" id="toc-numbered-list" class="nav-link" data-scroll-target="#numbered-list">Numbered list</a></li>
-  </ul></li>
-  <li><a href="#column-formatting" id="toc-column-formatting" class="nav-link" data-scroll-target="#column-formatting">Column formatting</a></li>
-  </ul></li>
-  <li><a href="#customizing-your-blog-design" id="toc-customizing-your-blog-design" class="nav-link" data-scroll-target="#customizing-your-blog-design">Customizing your blog design</a>
-  <ul class="collapse">
-  <li><a href="#theme" id="toc-theme" class="nav-link" data-scroll-target="#theme">Theme</a></li>
-  <li><a href="#synax-highlighting" id="toc-synax-highlighting" class="nav-link" data-scroll-target="#synax-highlighting">Synax highlighting</a></li>
-  <li><a href="#font-size-type-and-other-customization" id="toc-font-size-type-and-other-customization" class="nav-link" data-scroll-target="#font-size-type-and-other-customization">Font size, type, and other customization</a></li>
-  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -223,280 +149,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can include <a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/">links</a> using Markdown syntax as shown.</p>
 <p>You should include links to relevant sites as you write. You should additionally include a list of references as the end of your blog with full citations (and relevant links).</p>
 </section>
-<section id="visualizations" class="level2">
-<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
-<p>Visualizations, particularly interactive ones, will be well-received. That said, do not overuse visualizations. You may be better off with one complicated but well-crafted visualization as opposed to many quick-and-dirty plots. Any plots should be well-thought-out, properly labeled, informative, and visually appealing.</p>
-<p>If you want to include dynamic visualizations or tables, you should explore your options from packages that are built from <a href="https://www.htmlwidgets.org/showcase_leaflet.html"><strong>htmlwidgets</strong></a>. These <strong>htmlwidgets</strong>-based packages offer ways to build lighterweight, dynamic visualizations or tables that don’t require an R server to run! A more complete list of packages is available on the linked website, but a short list includes:</p>
-<ul>
-<li><a href="https://plot.ly/r/"><strong>plotly</strong></a>: Interactive graphics with D3</li>
-<li><a href="https://rstudio.github.io/leaflet/"><strong>leaflet</strong></a>: Interactive maps with OpenStreetMap</li>
-<li><a href="http://rstudio.github.io/dygraphs"><strong>dygraphs</strong></a>: Interactive time series visualization</li>
-<li><a href="http://dataknowledge.github.io/visNetwork"><strong>visNetwork</strong></a>: Network graph visualization vis.js</li>
-<li><a href="https://github.com/htmlwidgets/sparkline"><strong>sparkline</strong></a>: Small inline charts</li>
-<li><a href="https://github.com/bwlewis/rthreejs"><strong>threejs</strong></a>: Interactive 3D graphics</li>
-</ul>
-<p>You may embed a published Shiny app in your blog if useful, but be aware that there is a limited window size for embedded objects, which tends to makes the user experience of the app worse relative to a dedicated Shiny app page. Additionally, Shiny apps will go idle after a few minutes and have to be reloaded by the user, which may also affect the user experience.</p>
-<p>Any Shiny apps embedded in your blog should be accompanied by the link to the published Shiny app (I did this using a figure caption in the code chunk below, but you don’t have to incorporate the link in this way).</p>
-</section>
 <section id="sentiments-based-on-various-categories" class="level2">
 <h2 class="anchored" data-anchor-id="sentiments-based-on-various-categories">Sentiments based on various categories</h2>
-<div class="cell">
-<iframe src="https://bebailey.shinyapps.io/data-science-salaries?showcase=0" width="100%" height="500px" data-external="1">
-</iframe>
-</div>
 <iframe src="https://manzic.shinyapps.io/NMSHINY/" height="500px" width="1000px">
-</section>
-<section id="tables" class="level2">
-<h2>Tables</h2>
-<section id="dt-package" class="level3">
-<h3><strong>DT</strong> package</h3>
-<p>The <a href="https://rstudio.github.io/DT/"><strong>DT</strong> package</a> is great for making dynamic tables that can be displayed, searched, and filtered by the user without needing an R server or Shiny app!</p>
-<p>Note: you should load any packages you use in the <code>setup</code> code chunk as usual. The <code>library()</code> functions are shown below just for demonstration.</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, hp) <span class="sc">|&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">&quot;MPG&quot;</span>, <span class="st">&quot;Number of cylinders&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">&#39;top&#39;</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">autoWidth =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b3789479ff0c478eeef9" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b3789479ff0c478eeef9">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"10.4\" data-max=\"33.9\" data-scale=\"1\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"4\" data-max=\"8\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"52\" data-max=\"335\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant","Duster 360","Merc 240D","Merc 230","Merc 280","Merc 280C","Merc 450SE","Merc 450SL","Merc 450SLC","Cadillac Fleetwood","Lincoln Continental","Chrysler Imperial","Fiat 128","Honda Civic","Toyota Corolla","Toyota Corona","Dodge Challenger","AMC Javelin","Camaro Z28","Pontiac Firebird","Fiat X1-9","Porsche 914-2","Lotus Europa","Ford Pantera L","Ferrari Dino","Maserati Bora","Volvo 142E"],[21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4],[6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4],[110,110,93,110,175,105,245,62,95,123,123,180,180,180,205,215,230,66,52,65,97,150,150,245,175,66,91,113,264,175,335,109]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>MPG<\/th>\n      <th>Number of cylinders<\/th>\n      <th>Horsepower<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"autoWidth":true,"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="kableextra-package" class="level3">
-<h3><strong>kableExtra</strong> package</h3>
-<p>You can also use <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><strong>kableExtra</strong></a> for customizing HTML tables.</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Speed&quot;</span>, <span class="st">&quot;Distance&quot;</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">width =</span> <span class="st">&quot;1.5in&quot;</span>) </span></code></pre></div>
-<div class="cell-output-display">
-<table class="table table-striped" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Speed</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Distance</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left; width: 1.5in;">Min. : 4.0</td>
-<td style="text-align: left; width: 1.5in;">Min. : 2.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 1.5in;">1st Qu.:12.0</td>
-<td style="text-align: left; width: 1.5in;">1st Qu.: 26.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 1.5in;">Median :15.0</td>
-<td style="text-align: left; width: 1.5in;">Median : 36.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 1.5in;">Mean :15.4</td>
-<td style="text-align: left; width: 1.5in;">Mean : 42.98</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; width: 1.5in;">3rd Qu.:19.0</td>
-<td style="text-align: left; width: 1.5in;">3rd Qu.: 56.00</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; width: 1.5in;">Max. :25.0</td>
-<td style="text-align: left; width: 1.5in;">Max. :120.00</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-</section>
-<section id="images" class="level2">
-<h2>Images</h2>
-<p>Images and gifs can be displayed using code chunks:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img src="img/Kenesha-Sneed_safe-space.jpeg" class="img-fluid" style="width:80.0%" /></p>
-<figcaption>“Safe Space” by artist Kenesha Sneed</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img src="https://media.giphy.com/media/H7ZrrA9V2pd3Tehdds/giphy.gif" class="img-fluid" style="width:50.0%" /></p>
-<figcaption>This is a figure caption</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>You may also use Markdown syntax for displaying images as shown below, but code chunks offer easier customization of the image size and alignment.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid" /></p>
 <figcaption>This is another figure caption</figcaption>
 </figure>
 </div>
-<p>Either way, the file path can be a local path within your project directory or a URL for an image hosted online. This syntax works for PNG, PDF, JPG, and even GIF formats.</p>
-</section>
-<section id="equations" class="level2">
-<h2>Equations</h2>
-<p>You might include equations if part of the purpose of your blog is to explain a statistical method. There are two ways to include equations:</p>
-<ul>
-<li>Inline: <span class="math inline">\(b \sim N(0, \sigma^2_b)\)</span></li>
-<li>Display-style (displayed on its own line): <span class="math display">\[\frac{\sigma^2_b}{\sigma^2_b + \sigma^2_e}\]</span></li>
-</ul>
-<p>For typesetting equations appropriately, check out the <a href="https://github.com/manuelemacchia/math-latex/blob/master/amsmath.pdf">AMS-LaTeX quick reference</a> or take a look at the <em>Symbols in math mode</em> section of this <a href="https://users.dickinson.edu/~richesod/latex/latexcheatsheet.pdf">cheat sheet</a> (or do some extra Googling—there are <em>many</em> resources).</p>
 </section>
 </section>
-<section id="formatting" class="level1">
-<h1>Formatting</h1>
-<section id="tabbed-subsections" class="level2 tabset">
-<h2 class="tabset">Tabbed subsections</h2>
-<p>Each subsection below the “Tabbed subsections” section heading will appear in a tab. See R Markdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html">Section 7.6: Put content in tabs</a> for additional customization options.</p>
-<section id="bulleted-list" class="level3">
-<h3>Bulleted list</h3>
-<p>You can make a bulleted list like this:</p>
-<ul>
-<li>item 1</li>
-<li>item 2</li>
-<li>item 3</li>
-</ul>
-</section>
-<section id="numbered-list" class="level3">
-<h3>Numbered list</h3>
-<p>You can make a numbered list like this</p>
-<ol type="1">
-<li>First thing I want to say</li>
-<li>Second thing I want to say</li>
-<li>Third thing I want to say</li>
-</ol>
-</section>
-</section>
-<section id="column-formatting" class="level2">
-<h2>Column formatting</h2>
-<!-- Begin columns environment -->
-<div style="display: flex; font-size: large;">
-<!-- Create a column -->
-<section id="content-column-1" class="level3">
-<h3>Content Column 1</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel ipsum eu sem facilisis porttitor. Integer eu tristique lectus. Vestibulum nisi risus, porta sit amet cursus nec, auctor ac tellus. Integer egestas viverra rhoncus. Fusce id sem non ante vestibulum posuere ac sed lorem. Proin id felis a mi pellentesque viverra in at nulla. Duis augue nulla, aliquet ac ligula a, sagittis varius lorem.</p>
-</section>
-<!-- Create another column (this one is just adding horizontal space to separate content) -->
-<div>
-<div class="horizontalgap" style="width:60px">
-
-</div>
-</div>
-<!-- Create another column -->
-<section id="content-column-2" class="level3">
-<h3>Content Column 2</h3>
-<p>Aliquam non ante et erat luctus hendrerit eu ac justo. Fusce lacinia pulvinar neque non laoreet. Fusce vitae mauris pharetra, scelerisque purus eget, pharetra nisl. Aenean volutpat elementum tortor vitae rhoncus. Phasellus nec tellus euismod neque congue imperdiet tincidunt in mauris. Morbi eu lorem molestie, hendrerit lorem nec, semper massa. Sed vulputate hendrerit ex, eget cursus purus. Pellentesque consequat erat leo, eleifend porttitor lacus porta at. Vivamus faucibus quam ipsum, id condimentum ligula malesuada ultrices. Nullam luctus leo elit, vitae rutrum nibh venenatis eget. Nam at sodales purus. Proin nulla tellus, lacinia eget pretium sed, vehicula aliquet neque. Morbi vel eros elementum, suscipit elit eu, consequat libero. Nulla nec aliquet neque. Nunc bibendum sapien lectus, sed elementum nisi rutrum non. Ut vulputate at lacus eget maximus.</p>
-<div class="cell" data-layout-align="right">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" style="width:80.0%" /></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-</div>
-<!-- End columns environment with matching length indicator-->
-</section>
-</section>
-<section id="customizing-your-blog-design" class="level1">
-<h1>Customizing your blog design</h1>
-<p>As a <em>final</em> detail <strong>only</strong> if you have time, you can explore options for customizing the style of your blog. By default, we are using the <code>cosmo</code> theme from Bootswatch themes (see Line 7 of this file if you want to switch out themes).</p>
-<section id="theme" class="level2">
-<h2>Theme</h2>
-<p>There are 25 Bootswatch themes included with Quarto. You can change the theme easily by specifying one of these themes on Line 7:</p>
-<ul>
-<li>default<br />
-</li>
-<li>cerulean<br />
-</li>
-<li>cosmo<br />
-</li>
-<li>cyborg<br />
-</li>
-<li>darkly<br />
-</li>
-<li>flatly<br />
-</li>
-<li>journal<br />
-</li>
-<li>litera<br />
-</li>
-<li>lumen<br />
-</li>
-<li>lux<br />
-</li>
-<li>materia<br />
-</li>
-<li>minty<br />
-</li>
-<li>morph<br />
-</li>
-<li>pulse<br />
-</li>
-<li>quartz<br />
-</li>
-<li>sandstone<br />
-</li>
-<li>simplex<br />
-</li>
-<li>sketchy<br />
-</li>
-<li>slate<br />
-</li>
-<li>solar<br />
-</li>
-<li>spacelab<br />
-</li>
-<li>superhero<br />
-</li>
-<li>united<br />
-</li>
-<li>vapor<br />
-</li>
-<li>yeti<br />
-</li>
-<li>zephyr</li>
-</ul>
-<p>There are, I’m sure, many more similar packages with built in themes, or you can look into how to include a CSS code chunk to customize aspects of a theme.</p>
-</section>
-<section id="synax-highlighting" class="level2">
-<h2>Synax highlighting</h2>
-<p>You can also change the code chunk syntax highlighting option (Line 7, <code>highlight</code>):</p>
-<ul>
-<li><code>"default"</code></li>
-<li><code>"tango"</code></li>
-<li><code>"pygments"</code></li>
-<li><code>"kate"</code></li>
-<li><code>"monochrome"</code></li>
-<li><code>"espresso"</code></li>
-<li><code>"zenburn"</code></li>
-<li><code>"haddock"</code></li>
-<li><code>"textmate"</code></li>
-<li><code>NULL</code> for no syntax highlighting (not recommended)</li>
-</ul>
-</section>
-<section id="font-size-type-and-other-customization" class="level2">
-<h2>Font size, type, and other customization</h2>
-<p>Further customization requires adding a CSS style file or code chunk or incorporating other development options. Further customization should be your lowest and final priority for the project. Ensure your content is fully prepared first.</p>
-</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>Our conclusion and recommendations maybe?</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
