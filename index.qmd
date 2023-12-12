@@ -125,6 +125,7 @@ removed_words <- soai_data |>
 
 #removed_words # 659 words
 
+
 ```
 ```{r}
 #| label: ggplot-1
@@ -196,6 +197,31 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
 
 ```
 
+```{r}
+#| label: ggplot-4
+#| fig.align: left
+#| out.width: 100%
+
+# PLOT NRC LEXICON RESULTS
+
+nrc_lexicon <- get_sentiments("nrc")
+
+# using nrc lexicon
+soai_nrc <- soai_no_stopwords |>
+  inner_join(nrc_lexicon, by = "word") |>
+  group_by(ResponseId) |>
+  group_by(sentiment)
+
+soai_nrc_ds <- soai_nrc |>
+  group_by(sentiment) |>
+  summarize(N = n())
+
+# BAR CHART
+ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
+  geom_col(aes(fill = sentiment))
+
+
+```
 
 
 Examples and additional guidance are provided below. 
