@@ -55,7 +55,7 @@ As we delve deeper into the dynamic intersection of artificial intelligence and 
 
 You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/).
 
-```{r,show_col_types = FALSE}
+```{r}
 #| label: ggplot-example
 #| fig.align: left
 #| out.width: 100%
@@ -122,6 +122,11 @@ removed_words <- soai_data |>
 
 #removed_words # 659 words
 
+```
+```{r}
+#| label: ggplot-example
+#| fig.align: left
+#| out.width: 100%
 # PLOT FREQUENT WORDS
 
 soai_no_stopwords |>
@@ -146,7 +151,12 @@ soai_no_stopwords |>
 soai_word_freqs <- soai_no_stopwords |>
   select(word) |>
   count(word)
-
+```
+```{r}
+#| label: ggplot-example
+#| fig.align: left
+#| out.width: 100%
+#| #| fig.cap: 'Wordcloud'
 # WORDCLOUD WITH FREQUENT WORDS
 
 # Word cloud 
@@ -157,7 +167,12 @@ soai_word_freqs <- soai_no_stopwords |>
                    freq = n,
                    min.freq = 1000,
                    max.words = 50))
-  
+```
+```{r}
+#| label: ggplot-example
+#| fig.align: left
+#| out.width: 100%
+
 # PLOT OVERALL RESPONSES SENTIMENT SCORE  
 
 afinn_lexicon <- get_sentiments("afinn")
