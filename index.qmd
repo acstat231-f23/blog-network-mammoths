@@ -4,7 +4,7 @@ author: "Clara Hoey, Daizy Buluma, Christian Manzi"
 date: "12 Dec. 2023"
 format:
   html:
-    theme: minty
+    theme: default
     toc: true
 ---
 
@@ -169,7 +169,7 @@ soai_word_freqs <- soai_no_stopwords |>
                    max.words = 50))
 ```
 
-# Overall Developer Sentiments
+## Overall Developer Sentiments
 
 ```{r}
 #| label: ggplot-3
@@ -224,6 +224,7 @@ You may embed a published Shiny app in your blog if useful, but be aware that th
 
 Any Shiny apps embedded in your blog should be accompanied by the link to the published Shiny app (I did this using a figure caption in the code chunk below, but you don't have to incorporate the link in this way).
 
+## Sentiments based on various categories
 ```{r}
 #| label: ds-salaries-app
 #| out.width: "100%"
@@ -233,6 +234,7 @@ knitr::include_app("https://bebailey.shinyapps.io/data-science-salaries",
 
 
 ```
+
 <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px />
 
 ## Tables

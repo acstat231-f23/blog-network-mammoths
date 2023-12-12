@@ -100,11 +100,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#how-developers-describe-ai-tools" id="toc-how-developers-describe-ai-tools" class="nav-link" data-scroll-target="#how-developers-describe-ai-tools">How Developers Describe AI Tools</a></li>
-  <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a>
+  <li><a href="#how-developers-describe-ai-tools" id="toc-how-developers-describe-ai-tools" class="nav-link" data-scroll-target="#how-developers-describe-ai-tools">How Developers Describe AI Tools</a>
   <ul class="collapse">
+  <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a></li>
   <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
   <li><a href="#visualizations" id="toc-visualizations" class="nav-link" data-scroll-target="#visualizations">Visualizations</a></li>
+  <li><a href="#sentiments-based-on-various-categories" id="toc-sentiments-based-on-various-categories" class="nav-link" data-scroll-target="#sentiments-based-on-various-categories">Sentiments based on various categories</a></li>
   <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a>
   <ul class="collapse">
   <li><a href="#dt-package" id="toc-dt-package" class="nav-link" data-scroll-target="#dt-package"><strong>DT</strong> package</a></li>
@@ -203,9 +204,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="overall-developer-sentiments" class="level1">
-<h1>Overall Developer Sentiments</h1>
+<section id="overall-developer-sentiments" class="level2">
+<h2 class="anchored" data-anchor-id="overall-developer-sentiments">Overall Developer Sentiments</h2>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
@@ -217,6 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Examples and additional guidance are provided below.</p>
 <p>Take note of the the default code chunk options in the <code>setup</code> code chunk. For example, unlike the rest of the qmd files we worked in this semester, the default code chunk option is <code>echo = FALSE</code>, so you will need to set <code>echo  = TRUE</code> for any code chunks you would like to display in the blog. You should be thoughtful and intentional about the code you choose to display.</p>
+</section>
 <section id="links" class="level2">
 <h2 class="anchored" data-anchor-id="links">Links</h2>
 <p>You can include <a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/">links</a> using Markdown syntax as shown.</p>
@@ -236,25 +237,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>You may embed a published Shiny app in your blog if useful, but be aware that there is a limited window size for embedded objects, which tends to makes the user experience of the app worse relative to a dedicated Shiny app page. Additionally, Shiny apps will go idle after a few minutes and have to be reloaded by the user, which may also affect the user experience.</p>
 <p>Any Shiny apps embedded in your blog should be accompanied by the link to the published Shiny app (I did this using a figure caption in the code chunk below, but you don’t have to incorporate the link in this way).</p>
+</section>
+<section id="sentiments-based-on-various-categories" class="level2">
+<h2 class="anchored" data-anchor-id="sentiments-based-on-various-categories">Sentiments based on various categories</h2>
 <div class="cell">
 <iframe src="https://bebailey.shinyapps.io/data-science-salaries?showcase=0" width="100%" height="500px" data-external="1">
 </iframe>
 </div>
-<!-- <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px /> -->
+<iframe src="https://manzic.shinyapps.io/NMSHINY/" height="500px" width="1000px">
 </section>
 <section id="tables" class="level2">
-<h2 class="anchored" data-anchor-id="tables">Tables</h2>
+<h2>Tables</h2>
 <section id="dt-package" class="level3">
-<h3 class="anchored" data-anchor-id="dt-package"><strong>DT</strong> package</h3>
+<h3><strong>DT</strong> package</h3>
 <p>The <a href="https://rstudio.github.io/DT/"><strong>DT</strong> package</a> is great for making dynamic tables that can be displayed, searched, and filtered by the user without needing an R server or Shiny app!</p>
 <p>Note: you should load any packages you use in the <code>setup</code> code chunk as usual. The <code>library()</code> functions are shown below just for demonstration.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, hp) <span class="sc">|&gt;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">"MPG"</span>, <span class="st">"Number of cylinders"</span>, <span class="st">"Horsepower"</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">'top'</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">autoWidth =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span>(<span class="at">colnames =</span> <span class="fu">c</span>(<span class="st">&quot;MPG&quot;</span>, <span class="st">&quot;Number of cylinders&quot;</span>, <span class="st">&quot;Horsepower&quot;</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">filter =</span> <span class="st">&#39;top&#39;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>, <span class="at">autoWidth =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <div class="cell-output-display">
 
 <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b3789479ff0c478eeef9" style="width:100%;height:auto;"></div>
@@ -263,17 +267,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="kableextra-package" class="level3">
-<h3 class="anchored" data-anchor-id="kableextra-package"><strong>kableExtra</strong> package</h3>
+<h3><strong>kableExtra</strong> package</h3>
 <p>You can also use <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><strong>kableExtra</strong></a> for customizing HTML tables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Speed"</span>, <span class="st">"Distance"</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"striped"</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Speed&quot;</span>, <span class="st">&quot;Distance&quot;</span>), <span class="at">row.names =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">&quot;striped&quot;</span>, <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">width =</span> <span class="st">"1.5in"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">width =</span> <span class="st">&quot;1.5in&quot;</span>) </span></code></pre></div>
 <div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<table class="table table-striped" data-quarto-postprocess="true" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: left; font-weight: bold;">Speed</th>
@@ -314,14 +318,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="images" class="level2">
-<h2 class="anchored" data-anchor-id="images">Images</h2>
+<h2>Images</h2>
 <p>Images and gifs can be displayed using code chunks:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/Kenesha-Sneed_safe-space.jpeg" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">“Safe Space” by artist Kenesha Sneed</figcaption>
+<figure>
+<p><img src="img/Kenesha-Sneed_safe-space.jpeg" class="img-fluid" style="width:80.0%" /></p>
+<figcaption>“Safe Space” by artist Kenesha Sneed</figcaption>
 </figure>
 </div>
 </div>
@@ -329,24 +333,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media.giphy.com/media/H7ZrrA9V2pd3Tehdds/giphy.gif" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">This is a figure caption</figcaption>
+<figure>
+<p><img src="https://media.giphy.com/media/H7ZrrA9V2pd3Tehdds/giphy.gif" class="img-fluid" style="width:50.0%" /></p>
+<figcaption>This is a figure caption</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>You may also use Markdown syntax for displaying images as shown below, but code chunks offer easier customization of the image size and alignment.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">This is another figure caption</figcaption>
+<figure>
+<p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid" /></p>
+<figcaption>This is another figure caption</figcaption>
 </figure>
 </div>
 <p>Either way, the file path can be a local path within your project directory or a URL for an image hosted online. This syntax works for PNG, PDF, JPG, and even GIF formats.</p>
 </section>
 <section id="equations" class="level2">
-<h2 class="anchored" data-anchor-id="equations">Equations</h2>
+<h2>Equations</h2>
 <p>You might include equations if part of the purpose of your blog is to explain a statistical method. There are two ways to include equations:</p>
 <ul>
 <li>Inline: <span class="math inline">\(b \sim N(0, \sigma^2_b)\)</span></li>
@@ -358,10 +362,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="formatting" class="level1">
 <h1>Formatting</h1>
 <section id="tabbed-subsections" class="level2 tabset">
-<h2 class="tabset anchored" data-anchor-id="tabbed-subsections">Tabbed subsections</h2>
+<h2 class="tabset">Tabbed subsections</h2>
 <p>Each subsection below the “Tabbed subsections” section heading will appear in a tab. See R Markdown Cookbook <a href="https://bookdown.org/yihui/rmarkdown-cookbook/html-tabs.html">Section 7.6: Put content in tabs</a> for additional customization options.</p>
 <section id="bulleted-list" class="level3">
-<h3 class="anchored" data-anchor-id="bulleted-list">Bulleted list</h3>
+<h3>Bulleted list</h3>
 <p>You can make a bulleted list like this:</p>
 <ul>
 <li>item 1</li>
@@ -370,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="numbered-list" class="level3">
-<h3 class="anchored" data-anchor-id="numbered-list">Numbered list</h3>
+<h3>Numbered list</h3>
 <p>You can make a numbered list like this</p>
 <ol type="1">
 <li>First thing I want to say</li>
@@ -380,12 +384,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="column-formatting" class="level2">
-<h2 class="anchored" data-anchor-id="column-formatting">Column formatting</h2>
+<h2>Column formatting</h2>
 <!-- Begin columns environment -->
 <div style="display: flex; font-size: large;">
 <!-- Create a column -->
 <section id="content-column-1" class="level3">
-<h3 class="anchored" data-anchor-id="content-column-1">Content Column 1</h3>
+<h3>Content Column 1</h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel ipsum eu sem facilisis porttitor. Integer eu tristique lectus. Vestibulum nisi risus, porta sit amet cursus nec, auctor ac tellus. Integer egestas viverra rhoncus. Fusce id sem non ante vestibulum posuere ac sed lorem. Proin id felis a mi pellentesque viverra in at nulla. Duis augue nulla, aliquet ac ligula a, sagittis varius lorem.</p>
 </section>
 <!-- Create another column (this one is just adding horizontal space to separate content) -->
@@ -396,13 +400,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <!-- Create another column -->
 <section id="content-column-2" class="level3">
-<h3 class="anchored" data-anchor-id="content-column-2">Content Column 2</h3>
+<h3>Content Column 2</h3>
 <p>Aliquam non ante et erat luctus hendrerit eu ac justo. Fusce lacinia pulvinar neque non laoreet. Fusce vitae mauris pharetra, scelerisque purus eget, pharetra nisl. Aenean volutpat elementum tortor vitae rhoncus. Phasellus nec tellus euismod neque congue imperdiet tincidunt in mauris. Morbi eu lorem molestie, hendrerit lorem nec, semper massa. Sed vulputate hendrerit ex, eget cursus purus. Pellentesque consequat erat leo, eleifend porttitor lacus porta at. Vivamus faucibus quam ipsum, id condimentum ligula malesuada ultrices. Nullam luctus leo elit, vitae rutrum nibh venenatis eget. Nam at sodales purus. Proin nulla tellus, lacinia eget pretium sed, vehicula aliquet neque. Morbi vel eros elementum, suscipit elit eu, consequat libero. Nulla nec aliquet neque. Nunc bibendum sapien lectus, sed elementum nisi rutrum non. Ut vulputate at lacus eget maximus.</p>
 <div class="cell" data-layout-align="right">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figure>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" style="width:80.0%" /></p>
 </figure>
 </div>
 </div>
@@ -416,65 +420,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Customizing your blog design</h1>
 <p>As a <em>final</em> detail <strong>only</strong> if you have time, you can explore options for customizing the style of your blog. By default, we are using the <code>cosmo</code> theme from Bootswatch themes (see Line 7 of this file if you want to switch out themes).</p>
 <section id="theme" class="level2">
-<h2 class="anchored" data-anchor-id="theme">Theme</h2>
+<h2>Theme</h2>
 <p>There are 25 Bootswatch themes included with Quarto. You can change the theme easily by specifying one of these themes on Line 7:</p>
 <ul>
-<li>default<br>
+<li>default<br />
 </li>
-<li>cerulean<br>
+<li>cerulean<br />
 </li>
-<li>cosmo<br>
+<li>cosmo<br />
 </li>
-<li>cyborg<br>
+<li>cyborg<br />
 </li>
-<li>darkly<br>
+<li>darkly<br />
 </li>
-<li>flatly<br>
+<li>flatly<br />
 </li>
-<li>journal<br>
+<li>journal<br />
 </li>
-<li>litera<br>
+<li>litera<br />
 </li>
-<li>lumen<br>
+<li>lumen<br />
 </li>
-<li>lux<br>
+<li>lux<br />
 </li>
-<li>materia<br>
+<li>materia<br />
 </li>
-<li>minty<br>
+<li>minty<br />
 </li>
-<li>morph<br>
+<li>morph<br />
 </li>
-<li>pulse<br>
+<li>pulse<br />
 </li>
-<li>quartz<br>
+<li>quartz<br />
 </li>
-<li>sandstone<br>
+<li>sandstone<br />
 </li>
-<li>simplex<br>
+<li>simplex<br />
 </li>
-<li>sketchy<br>
+<li>sketchy<br />
 </li>
-<li>slate<br>
+<li>slate<br />
 </li>
-<li>solar<br>
+<li>solar<br />
 </li>
-<li>spacelab<br>
+<li>spacelab<br />
 </li>
-<li>superhero<br>
+<li>superhero<br />
 </li>
-<li>united<br>
+<li>united<br />
 </li>
-<li>vapor<br>
+<li>vapor<br />
 </li>
-<li>yeti<br>
+<li>yeti<br />
 </li>
 <li>zephyr</li>
 </ul>
 <p>There are, I’m sure, many more similar packages with built in themes, or you can look into how to include a CSS code chunk to customize aspects of a theme.</p>
 </section>
 <section id="synax-highlighting" class="level2">
-<h2 class="anchored" data-anchor-id="synax-highlighting">Synax highlighting</h2>
+<h2>Synax highlighting</h2>
 <p>You can also change the code chunk syntax highlighting option (Line 7, <code>highlight</code>):</p>
 <ul>
 <li><code>"default"</code></li>
@@ -490,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="font-size-type-and-other-customization" class="level2">
-<h2 class="anchored" data-anchor-id="font-size-type-and-other-customization">Font size, type, and other customization</h2>
+<h2>Font size, type, and other customization</h2>
 <p>Further customization requires adding a CSS style file or code chunk or incorporating other development options. Further customization should be your lowest and final priority for the project. Ensure your content is fully prepared first.</p>
 </section>
 </section>
@@ -502,16 +506,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can list R package citations with the code <code>citation("packageName")</code> in the console and then copy (and reformat as needed) the relevant text, e.g.,</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>To cite package 'DT' in publications use:
+<pre><code>To cite package &#39;DT&#39; in publications use:
 
   Xie Y, Cheng J, Tan X (2023). _DT: A Wrapper of the JavaScript
-  Library 'DataTables'_. R package version 0.29,
+  Library &#39;DataTables&#39;_. R package version 0.29,
   &lt;https://CRAN.R-project.org/package=DT&gt;.
 
 A BibTeX entry for LaTeX users is
 
   @Manual{,
-    title = {DT: A Wrapper of the JavaScript Library 'DataTables'},
+    title = {DT: A Wrapper of the JavaScript Library &#39;DataTables&#39;},
     author = {Yihui Xie and Joe Cheng and Xianying Tan},
     year = {2023},
     note = {R package version 0.29},
@@ -536,7 +540,7 @@ A BibTeX entry for LaTeX users is
 
 </main>
 <!-- /main column -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -771,6 +775,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+</body>
 
-
-</body></html>
+</html></iframe></section></section></main></div></body></html>
