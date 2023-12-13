@@ -171,6 +171,9 @@ ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
 This emotional analysis categorizes responses based on various emotions, such as anticipation, surprise, and trust, offering a more comprehensive perspective beyond positivity or negativity. For instance, the prevalence of trust in the chart implies a widespread optimistic outlook among the participants. Conversely, the substantial frequency of fear, as observed in responses from over 5,000 participants, signals notable concerns or reservations regarding the integration of AI tools on Stack Overflow. This emotional analysis adds more depth to our understanding of the sentiments expressed by programmers, offering a more holistic view of their attitudes toward AI.
 
 ## Analysis of Text Responses
+
+The two charts below show the most common words and three-word phrases respectively used in programmers' responses to the question "What is your opinion on Stack Overflow using AI tools to improve the current experience? What could AI help with most to improve Stack Overflow?". These graphs help to provide context for the sentiment analysis above. We have also removed stop words and plurals from these sets of text to help ensure only relevant text is included.
+
 ```{r}
 #| label: ggplot-1
 #| fig.align: left
@@ -201,6 +204,7 @@ soai_word_freqs <- soai_no_stopwords |>
   count(word)
 ```
 
+As we can see, some of the most common words used are "question," "answer," "improve," and "search," indicating a level of curiosity towards AI. Some of these words are also predictable, such as "code" or "tools," hence the trigram below to add context.
 
 
 ```{r}
@@ -246,6 +250,7 @@ soai_no_stopwords |>
       title = "The most common trigrams in developers responses on AI")
 
 ```
+As we can see, some of the most common phrases using these words are “AI could help,” “I think it,” “as long as,” “questions and answers,” etcetera. In conjunction with what we know from the sentiment analysis, we can see how the words and phrases from both of these charts, particularly “improve,” “AI could help,” and “as long as,” indicate fairly positive feelings and ancitipation about the use of AI tools in Stack Overflow. 
 
 
 ## Sentiments based on various categories
