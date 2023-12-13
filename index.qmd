@@ -63,27 +63,6 @@ This data is from the American Statistical Association’s Fall 2023 Data Challe
 #| fig.align: left
 #| out.width: 100%
 
-data <- read_csv("data/survey_results_public.csv")
-
-fdata <- data %>% filter(
-  Country == "United States of America",
-  SOVisitFreq == "Daily or almost daily"
-)
-
-#glimpse(data)
-
-saveRDS(data, "survey_results.rds")
-
-#head(data$SOAI)
-
-df <- data |>
-  select(ResponseId, SOAI, YearsCode, Age)
-
-
-
-saveRDS(df, "data/ID_SOAI_responses.rds")
-
-
 #################
 # TEXT ANALYSIS #
 #################
@@ -93,12 +72,7 @@ soai_res <- read_rds("data/ID_SOAI_responses.rds")
 
 soai_data <- soai_res |>
   unnest_tokens(output = word, input = SOAI) |>
-  # unnest_tokes(input = SOAI, output = bigram, token = "ngrams", n = 3)
   filter(!is.na(word))
-
-#head(soai_data)
-
-#head(stop_words) 
 
 non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
 
@@ -124,8 +98,6 @@ removed_words <- soai_data |>
   arrange(word)
 
 #removed_words # 659 words
-
-
 ```
 
 
@@ -166,15 +138,11 @@ soai_word_freqs <- soai_no_stopwords |>
 #| fig.align: left
 #| out.width: 100%
 
-soai_data_gram <- soai_res |>
- unnest_tokens(output = word, input= SOAI, token="words") %>%
-  filter(!is.na(word))
-
 soai_data <- soai_res |>
  unnest_tokens(output = word, input= SOAI, token="ngrams", n=3) %>%
   filter(!is.na(word))
 
-non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't") # add more
+non_stop_words <- c("necessary", "don't", "awfully", "appropriate", "wouldn't")
 
 more_stop_words <- c("stack", "overflow", "ai", "stackoverflow", "questions", "answers", "users","it could","would","would be")
 
@@ -205,7 +173,7 @@ soai_no_stopwords |>
       # as `x` and `y` in `aes()`
       x = NULL,
       y = "Number of instances",
-      title = "The most common words in developers responses on AI")
+      title = "The most common trigrams in developers responses on AI")
 
 ```
 
@@ -219,6 +187,10 @@ soai_no_stopwords |>
 # PLOT OVERALL RESPONSES SENTIMENT SCORE  
 
 afinn_lexicon <- get_sentiments("afinn")
+
+soai_data_gram <- soai_res |>
+ unnest_tokens(output = word, input= SOAI, token="words") %>%
+  filter(!is.na(word))
 
 soai_no_stopwords_gram <- soai_data_gram |>
   anti_join(filtered_stop_words, by = "word") |>
@@ -235,6 +207,8 @@ soai_afinn <- soai_no_stopwords_gram |>
   group_by(ResponseId) |>
   summarize(total_score_per_response = sum(value))
 
+# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON AFINN LEXICON
+
 ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
   geom_density(color="#AF7AC5", fill="#AF7AC5", alpha = 0.5) +
   theme_classic() +
@@ -250,12 +224,11 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
 #| fig.align: left
 #| out.width: 100%
 
-# PLOT NRC LEXICON RESULTS
+# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON NRC LEXICON
 
 nrc_lexicon <- get_sentiments("nrc")
 
-# using nrc lexicon
-soai_nrc <- soai_no_stopwords |>
+soai_nrc <- soai_no_stopwords_gram |>
   inner_join(nrc_lexicon, by = "word") |>
   group_by(ResponseId) |>
   group_by(sentiment)
@@ -266,23 +239,10 @@ soai_nrc_ds <- soai_nrc |>
 
 # BAR CHART
 ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
-  geom_col(aes(fill = sentiment))
-
-# PLOT OVERALL RESPONSES SENTIMENT SCORE  
-
-#bing_lexicon <- get_sentiments("bing") 
-nrc_lexicon <- get_sentiments("nrc")
-
-# using nrc lexicon
-soai_nrc <- soai_no_stopwords_gram |>
-  inner_join(nrc_lexicon, by = "word") |>
-  group_by(sentiment) 
-
-ggplot(data = soai_nrc, aes(x = sentiment)) +
-  geom_bar() +
+  geom_col(aes(fill = sentiment)) +
   theme(axis.text.x = element_text(angle = 45)) +
-  labs(title = "Visualizing Overall Sentiment based on NRC Lexicon", x = "Sentiments", y = "Word Count") 
-
+  labs(title = "Visualizing Overall Sentiment based on NRC Lexicon", x = "Sentiments", y = "Word Count") +
+  guides(fill = "none")
 ```
 
 
@@ -303,14 +263,12 @@ You should include links to relevant sites as you write. You should additionally
 #| label: ds-salaries-app
 #| out.width: "100%"
 
-
-
   knitr::include_app("https://manzic.shinyapps.io/NMSHINY/",
                     height = "500px")
 
 ```
 
-<!-- #<iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px /> -->
+<!-- <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000" > </iframe> -->
 
 
 

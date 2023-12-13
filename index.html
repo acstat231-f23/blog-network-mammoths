@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In the world of coding, things are shaking up with the rise of artificial intelligence (AI) tools. From those just getting the hang of coding to the pros handling big projects, everyone’s got a different take on AI. In this blog project, we’re digging into the real thoughts of programmers at different career stages. We look into their honest insights about how AI tools are fitting into their coding lives.</p>
+<p>In the world of coding, things are shaking up with the rise of artificial intelligence (AI) tools. From people just getting the hang of coding to the pros handling big projects, everyone has a different perspective on AI. In this blog project, we’re digging into the real thoughts of thousands of programmers across the United States at different career stages. Our goal is to use sentiment analysis to better understand the attitudes of programmers towards the use of AI tools in Stack Overflow. With the continuing rise of AI usage in the programming industry, it is important to understand how professional programmers feel about the impact of AI on their work.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -103,7 +103,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>As we delve deeper into the dynamic intersection of artificial intelligence and programming, it becomes evident that developers across various career stages are navigating a landscape that continually evolves. From the novice coders navigating their initial lines of code to seasoned professionals orchestrating complex projects, the integration of AI tools is reshaping the very essence of their work. This blog project aims to capture the nuanced perspectives of these developers, shedding light on the multifaceted ways in which AI is influencing their coding practices. Whether it’s streamlining repetitive tasks, unlocking new possibilities, or presenting unforeseen challenges, each coder brings a unique story to the table, contributing to the broader narrative of AI’s impact on the programming realm.</p>
+<p>All of the programmers in our study are software developers who use Stack Overflow (an online platform for sharing knowledge about computer programming) for their work at least once a week. The data is in the form of survey responses. The survey includes a mix of multiple choice and open response questions in 7 categories: (1) Basic Information; (2) Education, Work, and Career; (3) Technology and Tech Culture; (4) Stack Overflow Usage + Community; (5) Artificial Intelligence; (6) Professional Developer Series (Optional); and (7) Final Questions. In this blog, we have included data from some demographic multiple choice questions (e.g.&nbsp;age, years of coding experience) and have also done text analysis on the open response question “What is your opinion on Stack Overflow using AI tools to improve the current experience? What could AI help with most to improve Stack Overflow?”.</p>
+<p>This data is from the American Statistical Association’s Fall 2023 Data Challenge. The description of the dataset and downloadable zip file containing all of the data used in this project can be found at this link: https://community.amstat.org/asafalldatachallenge/home.</p>
 <!-- ## Website publication work flow -->
 <!-- 1. Edit qmd -->
 <!-- 2. Knit to HTML to view progress. You may need to click "Open in Browser" for some content to show (sometimes content won't show until you actually push your changes to GitHub and view the published website). -->
@@ -141,6 +142,22 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<div class="cell" data-layout-align="left">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in inner_join(soai_no_stopwords_gram, nrc_lexicon, by = "word"): Detected an unexpected many-to-many relationship between `x` and `y`.
+ℹ Row 14 of `x` matches multiple rows in `y`.
+ℹ Row 12042 of `y` matches multiple rows in `x`.
+ℹ If a many-to-many relationship is expected, set `relationship =
+  "many-to-many"` to silence this warning.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="index_files/figure-html/ggplot-4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Examples and additional guidance are provided below.</p>
 <p>Take note of the the default code chunk options in the <code>setup</code> code chunk. For example, unlike the rest of the qmd files we worked in this semester, the default code chunk option is <code>echo = FALSE</code>, so you will need to set <code>echo  = TRUE</code> for any code chunks you would like to display in the blog. You should be thoughtful and intentional about the code you choose to display.</p>
 </section>
@@ -155,7 +172,8 @@ ul.task-list li input[type="checkbox"] {
 <iframe src="https://manzic.shinyapps.io/NMSHINY/?showcase=0" width="100%" height="500px" data-external="1">
 </iframe>
 </div>
-<!-- #<iframe src = "https://manzic.shinyapps.io/NMSHINY/" height=500px width=1000px /> -->
+<iframe src="https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000">
+</iframe>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid figure-img"></p>
@@ -179,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 <pre><code>To cite package 'DT' in publications use:
 
   Xie Y, Cheng J, Tan X (2023). _DT: A Wrapper of the JavaScript
-  Library 'DataTables'_. R package version 0.29,
+  Library 'DataTables'_. R package version 0.30,
   &lt;https://CRAN.R-project.org/package=DT&gt;.
 
 A BibTeX entry for LaTeX users is
@@ -188,7 +206,7 @@ A BibTeX entry for LaTeX users is
     title = {DT: A Wrapper of the JavaScript Library 'DataTables'},
     author = {Yihui Xie and Joe Cheng and Xianying Tan},
     year = {2023},
-    note = {R package version 0.29},
+    note = {R package version 0.30},
     url = {https://CRAN.R-project.org/package=DT},
   }</code></pre>
 </div>
