@@ -51,10 +51,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#research-findings" id="toc-research-findings" class="nav-link" data-scroll-target="#research-findings">Research Findings</a>
   <ul class="collapse">
   <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a></li>
-  <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
+  <li><a href="#analysis-of-text-responses" id="toc-analysis-of-text-responses" class="nav-link" data-scroll-target="#analysis-of-text-responses">Analysis of Text Responses</a></li>
   <li><a href="#sentiments-based-on-various-categories" id="toc-sentiments-based-on-various-categories" class="nav-link" data-scroll-target="#sentiments-based-on-various-categories">Sentiments based on various categories</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#limitations-and-improvements" id="toc-limitations-and-improvements" class="nav-link" data-scroll-target="#limitations-and-improvements">Limitations and Improvements</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -127,13 +128,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Examining the density plot, it is evident that a majority of responses lean towards the positive side, indicating an overall optimistic sentiment among the surveyed developers. However, recognizing that opinions extend beyond a simple positive-negative spectrum, we sought a more specific understanding of respondents’ feelings. To look deeper into the emotional landscape, we used a bar chart to visualize the diverse sentiments expressed by developers.</p>
 <div class="cell" data-layout-align="left">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in inner_join(soai_no_stopwords_gram, nrc_lexicon, by = "word"): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 14 of `x` matches multiple rows in `y`.
-ℹ Row 12042 of `y` matches multiple rows in `x`.
-ℹ If a many-to-many relationship is expected, set `relationship =
-  "many-to-many"` to silence this warning.</code></pre>
-</div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
@@ -143,6 +137,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>This emotional analysis categorizes responses based on various emotions, such as anticipation, surprise, and trust, offering a more comprehensive perspective beyond positivity or negativity. For instance, the prevalence of trust in the chart implies a widespread optimistic outlook among the participants. Conversely, the substantial frequency of fear, as observed in responses from over 5,000 participants, signals notable concerns or reservations regarding the integration of AI tools on Stack Overflow. This emotional analysis adds more depth to our understanding of the sentiments expressed by programmers, offering a more holistic view of their attitudes toward AI.</p>
+</section>
+<section id="analysis-of-text-responses" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-text-responses">Analysis of Text Responses</h2>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
@@ -161,32 +158,27 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Examples and additional guidance are provided below.</p>
-<p>Take note of the the default code chunk options in the <code>setup</code> code chunk. For example, unlike the rest of the qmd files we worked in this semester, the default code chunk option is <code>echo = FALSE</code>, so you will need to set <code>echo  = TRUE</code> for any code chunks you would like to display in the blog. You should be thoughtful and intentional about the code you choose to display.</p>
-</section>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
-<p>You can include <a href="https://www.datadreaming.org/post/r-markdown-theme-gallery/">links</a> using Markdown syntax as shown.</p>
-<p>You should include links to relevant sites as you write. You should additionally include a list of references as the end of your blog with full citations (and relevant links).</p>
 </section>
 <section id="sentiments-based-on-various-categories" class="level2">
 <h2 class="anchored" data-anchor-id="sentiments-based-on-various-categories">Sentiments based on various categories</h2>
+<p>In addition, we used a Shiny app to facilitate further exploration of the data. This application breaks down response scores by key demographic factors, providing a comprehensive look at how opinions regarding AI integration on Stack Overflow vary across different segments of the programming community. Through the Shiny app, users can interactively analyze response scores based on factors such as experience, age, and education.</p>
 <div class="cell">
 <iframe src="https://manzic.shinyapps.io/NMSHINY/?showcase=0" width="100%" height="500px" data-external="1">
 </iframe>
 </div>
+<p>Analyzing the findings from the Shiny app, which breaks down response scores by demographic factors, several noteworthy patterns emerged. Examining sentiments based on experience levels, it became apparent that less experienced programmers tended to express more positive opinions about AI. This suggests a potential correlation between lower levels of coding experience and a more favorable outlook towards the integration of AI tools on Stack Overflow. In terms of age groups, the median opinion scores were consistent across most groups, except for respondents aged 65 and above, who exhibited a slightly lower median sentiment. Notably, the age groups of 18-24 and 25-34 displayed the highest upper range in opinions, though this could be influenced by a higher number of respondents within these age brackets. Conversely, the 35-44 and 45-54 age groups showed lower sentiment ranges. When examining sentiments by education, no substantial differences were observed, with most outliers occurring among respondents holding a Bachelor’s degree. These nuanced insights gleaned from the Shiny app shed light on the intersectionality of demographic factors and their impact on programmers’ sentiments regarding AI integration on Stack Overflow.</p>
 <!-- <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000" > </iframe> -->
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">This is another figure caption</figcaption>
-</figure>
-</div>
+<!-- ![This is another figure caption](https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif) -->
 </section>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
 <p>Our conclusion and recommendations maybe?</p>
+</section>
+<section id="limitations-and-improvements" class="level1">
+<h1>Limitations and Improvements</h1>
+<p>While our study has provided valuable insights into programmers’ attitudes towards AI on Stack Overflow, it is important to acknowledge certain limitations that could impact the accuracy of our findings. Sentiment analysis, while a powerful tool, is not without its flaws. The complex nature of human language, sarcasm, or context-specific interpretations can challenge the accuracy of sentiment categorization. Additionally, the filtration of words and the strength assigned to them can influence the analysis outcome, potentially introducing bias. Furthermore, the uneven distribution of ages and experience levels in our dataset might skew our results towards certain demographic groups.</p>
+<p>To address these limitations, future research endeavors could focus on analyzing a larger set of open-response answers, providing a more precise understanding of programmer sentiments. Experimenting with various lexicons and refining the sentiment analysis methodology could also enhance the accuracy of our findings. Moreover, diversifying the survey audience beyond Stack Overflow users to include programmers from specific companies or industries could offer a more comprehensive and representative view of attitudes towards AI tools in coding. We may obtain a more comprehensive and precise representation of the perspectives of the programming community by implementing these enhancements.</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>

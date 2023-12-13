@@ -41,7 +41,7 @@ knitr::include_graphics("img/AI.png")
 
 All of the programmers in our study are software developers who use Stack Overflow (an online platform for sharing knowledge about computer programming) for their work at least once a week. The data is in the form of survey responses. The survey includes a mix of multiple choice and open response questions in 7 categories: (1) Basic Information; (2) Education, Work, and Career; (3) Technology and Tech Culture; (4) Stack Overflow Usage + Community; (5) Artificial Intelligence; (6) Professional Developer Series (Optional); and (7) Final Questions. In this blog, we have included data from some demographic multiple choice questions (e.g. age, years of coding experience) and have also done text analysis on the open response question “What is your opinion on Stack Overflow using AI tools to improve the current experience? What could AI help with most to improve Stack Overflow?”. 
 
-This data is from the American Statistical Association’s Fall 2023 Data Challenge. The description of the dataset and downloadable zip file containing all of the data used in this project can be found at this link: https://community.amstat.org/asafalldatachallenge/home. 
+This data is from the American Statistical Association’s Fall 2023 Data Challenge. The description of the dataset and downloadable zip file containing all of the data used in this project can be found at this link: <https://community.amstat.org/asafalldatachallenge/home>. 
 					
 
 
@@ -140,7 +140,7 @@ ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
 Examining the density plot, it is evident that a majority of responses lean towards the positive side, indicating an overall optimistic sentiment among the surveyed developers. However, recognizing that opinions extend beyond a simple positive-negative spectrum, we sought a more specific understanding of respondents' feelings. To look deeper into the emotional landscape, we used a bar chart to visualize the diverse sentiments expressed by developers.
 
 
-```{r,message=FALSE}
+```{r,warning=FALSE}
 #| label: ggplot-4
 #| fig.align: left
 #| out.width: 100%
@@ -170,6 +170,7 @@ ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
 
 This emotional analysis categorizes responses based on various emotions, such as anticipation, surprise, and trust, offering a more comprehensive perspective beyond positivity or negativity. For instance, the prevalence of trust in the chart implies a widespread optimistic outlook among the participants. Conversely, the substantial frequency of fear, as observed in responses from over 5,000 participants, signals notable concerns or reservations regarding the integration of AI tools on Stack Overflow. This emotional analysis adds more depth to our understanding of the sentiments expressed by programmers, offering a more holistic view of their attitudes toward AI.
 
+## Analysis of Text Responses
 ```{r}
 #| label: ggplot-1
 #| fig.align: left
@@ -247,26 +248,11 @@ soai_no_stopwords |>
 ```
 
 
-
-
-
-
-
-
-
-Examples and additional guidance are provided below. 
-
-Take note of the the default code chunk options in the `setup` code chunk. For example, unlike the rest of the qmd files we worked in this semester, the default code chunk option is `echo = FALSE`, so you will need to set `echo  = TRUE` for any code chunks you would like to display in the blog. You should be thoughtful and intentional about the code you choose to display. 
-
-
-## Links 
-
-You can include [links](https://www.datadreaming.org/post/r-markdown-theme-gallery/) using Markdown syntax as shown. 
-
-You should include links to relevant sites as you write. You should additionally include a list of references as the end of your blog with full citations (and relevant links).
-
-
 ## Sentiments based on various categories
+
+
+In addition, we used a Shiny app to facilitate further exploration of the data. This application breaks down response scores by key demographic factors, providing a comprehensive look at how opinions regarding AI integration on Stack Overflow vary across different segments of the programming community. Through the Shiny app, users can interactively analyze response scores based on factors such as experience, age, and education. 
+
 ```{r}
 #| label: ds-salaries-app
 #| out.width: "100%"
@@ -275,16 +261,24 @@ You should include links to relevant sites as you write. You should additionally
                     height = "500px")
 
 ```
+Analyzing the findings from the Shiny app, which breaks down response scores by demographic factors, several noteworthy patterns emerged. Examining sentiments based on experience levels, it became apparent that less experienced programmers tended to express more positive opinions about AI. This suggests a potential correlation between lower levels of coding experience and a more favorable outlook towards the integration of AI tools on Stack Overflow. In terms of age groups, the median opinion scores were consistent across most groups, except for respondents aged 65 and above, who exhibited a slightly lower median sentiment. Notably, the age groups of 18-24 and 25-34 displayed the highest upper range in opinions, though this could be influenced by a higher number of respondents within these age brackets. Conversely, the 35-44 and 45-54 age groups showed lower sentiment ranges. When examining sentiments by education, no substantial differences were observed, with most outliers occurring among respondents holding a Bachelor's degree. These nuanced insights gleaned from the Shiny app shed light on the intersectionality of demographic factors and their impact on programmers' sentiments regarding AI integration on Stack Overflow.
 
 <!-- <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000" > </iframe> -->
 
 
 
-![This is another figure caption](https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif)
+<!-- ![This is another figure caption](https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif) -->
 
 # Conclusion
 
 Our conclusion and recommendations maybe?
+
+
+# Limitations and Improvements
+
+While our study has provided valuable insights into programmers' attitudes towards AI on Stack Overflow, it is important to acknowledge certain limitations that could impact the accuracy of our findings. Sentiment analysis, while a powerful tool, is not without its flaws. The complex nature of human language, sarcasm, or context-specific interpretations can challenge the accuracy of sentiment categorization. Additionally, the filtration of words and the strength assigned to them can influence the analysis outcome, potentially introducing bias. Furthermore, the uneven distribution of ages and experience levels in our dataset might skew our results towards certain demographic groups. 
+
+To address these limitations, future research endeavors could focus on analyzing a larger set of open-response answers, providing a more precise understanding of programmer sentiments. Experimenting with various lexicons and refining the sentiment analysis methodology could also enhance the accuracy of our findings. Moreover, diversifying the survey audience beyond Stack Overflow users to include programmers from specific companies or industries could offer a more comprehensive and representative view of attitudes towards AI tools in coding. We may obtain a more comprehensive and precise representation of the perspectives of the programming community by implementing these enhancements.
 
 # References
 
