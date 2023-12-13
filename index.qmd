@@ -282,8 +282,13 @@ To address these limitations, future research endeavors could focus on analyzing
 
 # References
 
+<!-- Dataset -->
+American Statistical Association (Fall 2023), "The Public 2023 Stack Overflow Developer Survey Results", available at <https://community.amstat.org/asafalldatachallenge/home>.
 
+<!-- Textbook -->
 Baumer, B. S., Kaplan, D. T., and Horton, N. J. (2021), *Modern Data Science with R* (2nd ed.), Boca Raton, FL: CRC Press.
+
+<!-- R packages -->
 
 Silge J, Robinson D (2016). “tidytext: Text Mining and Analysis Using Tidy Data Principles in R.” _JOSS_,
   *1*(3). doi:10.21105/joss.00037 <https://doi.org/10.21105/joss.00037>,
@@ -293,8 +298,6 @@ Silge J, Robinson D (2016). “tidytext: Text Mining and Analysis Using Tidy Dat
 Hvitfeldt E (2022). _textdata: Download and Load Various Text Datasets_. R package version 0.4.4,
   <https://CRAN.R-project.org/package=textdata>.
   
-Shah, Syed A. A. (October 2022), "Starbucks Drinks" (Version 1), *Kaggle*, available at <https://www.kaggle.com/datasets/syedasimalishah/starbucks-drinks>.
-
 
 Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R, Grolemund G, Hayes A, Henry L, Hester J,
   Kuhn M, Pedersen TL, Miller E, Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi K,
