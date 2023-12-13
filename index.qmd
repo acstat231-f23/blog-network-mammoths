@@ -54,10 +54,12 @@ This data is from the American Statistical Association’s Fall 2023 Data Challe
 <!-- 3. Commit and push changes when you are ready. The website may take a couple minutes to update automatically after the push, but you may need to clear your browser's cache or view the page in a private/incognito window to see the changes more quickly.  -->
 
 
-# How Developers Describe AI Tools
+# Research Findings
+## Overall Developer Sentiments
+
+Upon analyzing the survey responses from our cohort of active Stack Overflow users, several noteworthy trends and sentiments emerged. Firstly, a majority of participants expressed a generally positive attitude towards the integration of AI tools on Stack Overflow, citing potential benefits in streamlining problem-solving processes and enhancing the overall user experience. Respondents highlighted the prospect of improved search functionality, more accurate question categorization, and tailored content recommendations as areas where AI could significantly contribute.
 
 <!-- You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/). -->
-
 ```{r,message=FALSE}
 #| label: data-wrangling
 #| fig.align: left
@@ -100,6 +102,73 @@ removed_words <- soai_data |>
 #removed_words # 659 words
 ```
 
+```{r}
+#| label: ggplot-3
+#| fig.align: left
+#| out.width: 100%
+
+# PLOT OVERALL RESPONSES SENTIMENT SCORE  
+
+afinn_lexicon <- get_sentiments("afinn")
+
+soai_data_gram <- soai_res |>
+ unnest_tokens(output = word, input= SOAI, token="words") %>%
+  filter(!is.na(word))
+
+soai_no_stopwords_gram <- soai_data_gram |>
+  anti_join(filtered_stop_words, by = "word") |>
+  filter(! word %in% more_stop_words)
+
+removed_words <- soai_data_gram |>
+  anti_join(soai_no_stopwords_gram, by = "word") |>
+  count(word) |>
+  arrange(word)
+
+# using afinn lexicon
+soai_afinn <- soai_no_stopwords_gram |>
+  inner_join(afinn_lexicon, by = "word") |>
+  group_by(ResponseId) |>
+  summarize(total_score_per_response = sum(value))
+
+# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON AFINN LEXICON
+
+ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
+  geom_density(color="#AF7AC5", fill="#AF7AC5", alpha = 0.5) +
+  theme_classic() +
+  labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
+```
+Examining the density plot, it is evident that a majority of responses lean towards the positive side, indicating an overall optimistic sentiment among the surveyed developers. However, recognizing that opinions extend beyond a simple positive-negative spectrum, we sought a more specific understanding of respondents' feelings. To look deeper into the emotional landscape, we used a bar chart to visualize the diverse sentiments expressed by developers.
+
+
+```{r,message=FALSE}
+#| label: ggplot-4
+#| fig.align: left
+#| out.width: 100%
+
+# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON NRC LEXICON
+
+nrc_lexicon <- get_sentiments("nrc")
+
+soai_nrc <- soai_no_stopwords_gram |>
+  inner_join(nrc_lexicon, by = "word") |>
+  group_by(ResponseId) |>
+  group_by(sentiment)
+
+soai_nrc_ds <- soai_nrc |>
+  group_by(sentiment) |>
+  summarize(N = n())
+
+# BAR CHART
+ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
+  geom_col(aes(fill = sentiment)) +
+  theme(axis.text.x = element_text(angle = 45)) +
+  labs(title = "Visualizing Overall Sentiment based on NRC Lexicon", x = "Sentiments", y = "Word Count") +
+  guides(fill = "none")
+```
+
+
+
+This emotional analysis categorizes responses based on various emotions, such as anticipation, surprise, and trust, offering a more comprehensive perspective beyond positivity or negativity. For instance, the prevalence of trust in the chart implies a widespread optimistic outlook among the participants. Conversely, the substantial frequency of fear, as observed in responses from over 5,000 participants, signals notable concerns or reservations regarding the integration of AI tools on Stack Overflow. This emotional analysis adds more depth to our understanding of the sentiments expressed by programmers, offering a more holistic view of their attitudes toward AI.
 
 ```{r}
 #| label: ggplot-1
@@ -177,73 +246,12 @@ soai_no_stopwords |>
 
 ```
 
-## Overall Developer Sentiments
-
-```{r}
-#| label: ggplot-3
-#| fig.align: left
-#| out.width: 100%
-
-# PLOT OVERALL RESPONSES SENTIMENT SCORE  
-
-afinn_lexicon <- get_sentiments("afinn")
-
-soai_data_gram <- soai_res |>
- unnest_tokens(output = word, input= SOAI, token="words") %>%
-  filter(!is.na(word))
-
-soai_no_stopwords_gram <- soai_data_gram |>
-  anti_join(filtered_stop_words, by = "word") |>
-  filter(! word %in% more_stop_words)
-
-removed_words <- soai_data_gram |>
-  anti_join(soai_no_stopwords_gram, by = "word") |>
-  count(word) |>
-  arrange(word)
-
-# using afinn lexicon
-soai_afinn <- soai_no_stopwords_gram |>
-  inner_join(afinn_lexicon, by = "word") |>
-  group_by(ResponseId) |>
-  summarize(total_score_per_response = sum(value))
-
-# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON AFINN LEXICON
-
-ggplot(data = soai_afinn, aes(x = total_score_per_response)) +
-  geom_density(color="#AF7AC5", fill="#AF7AC5", alpha = 0.5) +
-  theme_classic() +
-  labs(title = "Total Response Score based on AFINN Lexicon", x = "Response Score")
-
-```
 
 
 
 
-```{r,message=FALSE}
-#| label: ggplot-4
-#| fig.align: left
-#| out.width: 100%
 
-# PLOT OVERALL RESPONSES SENTIMENT SCORE BASED ON NRC LEXICON
 
-nrc_lexicon <- get_sentiments("nrc")
-
-soai_nrc <- soai_no_stopwords_gram |>
-  inner_join(nrc_lexicon, by = "word") |>
-  group_by(ResponseId) |>
-  group_by(sentiment)
-
-soai_nrc_ds <- soai_nrc |>
-  group_by(sentiment) |>
-  summarize(N = n())
-
-# BAR CHART
-ggplot(data = soai_nrc_ds, aes(x = sentiment, y = N)) +
-  geom_col(aes(fill = sentiment)) +
-  theme(axis.text.x = element_text(angle = 45)) +
-  labs(title = "Visualizing Overall Sentiment based on NRC Lexicon", x = "Sentiments", y = "Word Count") +
-  guides(fill = "none")
-```
 
 
 Examples and additional guidance are provided below. 

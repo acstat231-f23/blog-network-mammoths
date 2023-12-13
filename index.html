@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#how-developers-describe-ai-tools" id="toc-how-developers-describe-ai-tools" class="nav-link" data-scroll-target="#how-developers-describe-ai-tools">How Developers Describe AI Tools</a>
+  <li><a href="#research-findings" id="toc-research-findings" class="nav-link" data-scroll-target="#research-findings">Research Findings</a>
   <ul class="collapse">
   <li><a href="#overall-developer-sentiments" id="toc-overall-developer-sentiments" class="nav-link" data-scroll-target="#overall-developer-sentiments">Overall Developer Sentiments</a></li>
   <li><a href="#links" id="toc-links" class="nav-link" data-scroll-target="#links">Links</a></li>
@@ -110,9 +110,39 @@ ul.task-list li input[type="checkbox"] {
 <!-- 2. Knit to HTML to view progress. You may need to click "Open in Browser" for some content to show (sometimes content won't show until you actually push your changes to GitHub and view the published website). -->
 <!-- 3. Commit and push changes when you are ready. The website may take a couple minutes to update automatically after the push, but you may need to clear your browser's cache or view the page in a private/incognito window to see the changes more quickly.  -->
 </section>
-<section id="how-developers-describe-ai-tools" class="level1">
-<h1>How Developers Describe AI Tools</h1>
+<section id="research-findings" class="level1">
+<h1>Research Findings</h1>
+<section id="overall-developer-sentiments" class="level2">
+<h2 class="anchored" data-anchor-id="overall-developer-sentiments">Overall Developer Sentiments</h2>
+<p>Upon analyzing the survey responses from our cohort of active Stack Overflow users, several noteworthy trends and sentiments emerged. Firstly, a majority of participants expressed a generally positive attitude towards the integration of AI tools on Stack Overflow, citing potential benefits in streamlining problem-solving processes and enhancing the overall user experience. Respondents highlighted the prospect of improved search functionality, more accurate question categorization, and tailored content recommendations as areas where AI could significantly contribute.</p>
 <!-- You can include text, `code`, and output as usual. Remember to take full advantage of Markdown and its [syntax shortcuts](https://www.markdownguide.org/basic-syntax/). -->
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="index_files/figure-html/ggplot-3-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Examining the density plot, it is evident that a majority of responses lean towards the positive side, indicating an overall optimistic sentiment among the surveyed developers. However, recognizing that opinions extend beyond a simple positive-negative spectrum, we sought a more specific understanding of respondents’ feelings. To look deeper into the emotional landscape, we used a bar chart to visualize the diverse sentiments expressed by developers.</p>
+<div class="cell" data-layout-align="left">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in inner_join(soai_no_stopwords_gram, nrc_lexicon, by = "word"): Detected an unexpected many-to-many relationship between `x` and `y`.
+ℹ Row 14 of `x` matches multiple rows in `y`.
+ℹ Row 12042 of `y` matches multiple rows in `x`.
+ℹ If a many-to-many relationship is expected, set `relationship =
+  "many-to-many"` to silence this warning.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="index_files/figure-html/ggplot-4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This emotional analysis categorizes responses based on various emotions, such as anticipation, surprise, and trust, offering a more comprehensive perspective beyond positivity or negativity. For instance, the prevalence of trust in the chart implies a widespread optimistic outlook among the participants. Conversely, the substantial frequency of fear, as observed in responses from over 5,000 participants, signals notable concerns or reservations regarding the integration of AI tools on Stack Overflow. This emotional analysis adds more depth to our understanding of the sentiments expressed by programmers, offering a more holistic view of their attitudes toward AI.</p>
 <div class="cell" data-layout-align="left">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-left">
@@ -131,33 +161,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<section id="overall-developer-sentiments" class="level2">
-<h2 class="anchored" data-anchor-id="overall-developer-sentiments">Overall Developer Sentiments</h2>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="index_files/figure-html/ggplot-3-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="left">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in inner_join(soai_no_stopwords_gram, nrc_lexicon, by = "word"): Detected an unexpected many-to-many relationship between `x` and `y`.
-ℹ Row 14 of `x` matches multiple rows in `y`.
-ℹ Row 12042 of `y` matches multiple rows in `x`.
-ℹ If a many-to-many relationship is expected, set `relationship =
-  "many-to-many"` to silence this warning.</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="index_files/figure-html/ggplot-4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
 <p>Examples and additional guidance are provided below.</p>
 <p>Take note of the the default code chunk options in the <code>setup</code> code chunk. For example, unlike the rest of the qmd files we worked in this semester, the default code chunk option is <code>echo = FALSE</code>, so you will need to set <code>echo  = TRUE</code> for any code chunks you would like to display in the blog. You should be thoughtful and intentional about the code you choose to display.</p>
 </section>
@@ -172,8 +175,7 @@ ul.task-list li input[type="checkbox"] {
 <iframe src="https://manzic.shinyapps.io/NMSHINY/?showcase=0" width="100%" height="500px" data-external="1">
 </iframe>
 </div>
-<iframe src="https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000">
-</iframe>
+<!-- <iframe src = "https://manzic.shinyapps.io/NMSHINY/" height="500" width="1000" > </iframe> -->
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://media.giphy.com/media/8i5IvxP9ZLgmjXN1BF/giphy.gif" class="img-fluid figure-img"></p>
@@ -197,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 <pre><code>To cite package 'DT' in publications use:
 
   Xie Y, Cheng J, Tan X (2023). _DT: A Wrapper of the JavaScript
-  Library 'DataTables'_. R package version 0.30,
+  Library 'DataTables'_. R package version 0.29,
   &lt;https://CRAN.R-project.org/package=DT&gt;.
 
 A BibTeX entry for LaTeX users is
@@ -206,7 +208,7 @@ A BibTeX entry for LaTeX users is
     title = {DT: A Wrapper of the JavaScript Library 'DataTables'},
     author = {Yihui Xie and Joe Cheng and Xianying Tan},
     year = {2023},
-    note = {R package version 0.30},
+    note = {R package version 0.29},
     url = {https://CRAN.R-project.org/package=DT},
   }</code></pre>
 </div>
